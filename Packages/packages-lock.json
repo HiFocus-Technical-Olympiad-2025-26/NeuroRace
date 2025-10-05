@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.nextmind.unitysdk": {
+      "version": "1.5.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://registry.npmjs.com"
+    },
     "com.unity.collab-proxy": {
       "version": "2.0.4",
       "depth": 0,
