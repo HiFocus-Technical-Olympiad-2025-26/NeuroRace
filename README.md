@@ -9,7 +9,7 @@ The goal is to create a game that can be **controlled using NextMind brain-sensi
 
 To clone the main repository **including submodules** (3D assets), run:
 ```
-git clone --recurse-submodules https://github.com/your-org/MyUnityGame.git
+git clone --recurse-submodules https://github.com/HiFocus-Technical-Olympiad-2025-26/NeuroRace.git
 ```
 
 If you have already cloned the project without submodules:
