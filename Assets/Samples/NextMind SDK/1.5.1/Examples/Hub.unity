@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1753778605517129936, guid: 60e15e728a954654ab9f3a697da433d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 192.8
       objectReference: {fileID: 0}
     - target: {fileID: 1753778605517129936, guid: 60e15e728a954654ab9f3a697da433d2, type: 3}
       propertyPath: m_LocalPosition.y
@@ -652,7 +652,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5772243408818577052, guid: e2403c56af46d314fbc68b86f62a1315, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 192.8
       objectReference: {fileID: 0}
     - target: {fileID: 5772243408818577052, guid: e2403c56af46d314fbc68b86f62a1315, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1098,7 +1098,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 2
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &1371250736
 Canvas:
   m_ObjectHideFlags: 0
@@ -1475,7 +1475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633972759}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 192.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1371250737}
@@ -1771,7 +1771,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842480125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 192.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
