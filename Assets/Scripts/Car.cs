@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Car : MonoBehaviour
 {
@@ -25,11 +26,38 @@ public class Car : MonoBehaviour
 
     private Rigidbody rb;
 
+    /*InputActions input;
+    float throttle;
+    float brake;
+    float steer;
+    bool handbrake;*/
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.localPosition;
+
+        /*input.Vehicle.Throttle.performed += ctx => throttle = ctx.ReadValue<float>();
+        input.Vehicle.BrakeReverse.performed += ctx => brake = ctx.ReadValue<float>();
+        input.Vehicle.Steering.performed += ctx => steer = ctx.ReadValue<float>();
+        input.Vehicle.Handbrake.performed += ctx => handbrake = ctx.ReadValue<float>() > 0.5f;
+        input.Vehicle.Handbrake.canceled += ctx => handbrake = false;*/
     }
+
+    /*void Awake()
+    {
+        input = new InputActions();
+    }
+
+    void OnEnable()
+    {
+        input.Enable();
+    }
+
+    void OnDisable()
+    {
+        input.Disable();
+    }*/
 
     void FixedUpdate()
     {
@@ -47,8 +75,8 @@ public class Car : MonoBehaviour
         wheelColliderLeftBack.motorTorque = throttle * motorTorque;
         wheelColliderRightBack.motorTorque = throttle * motorTorque;
 
-        // Brzda (Space)
-        if (Input.GetKey(KeyCode.Space))
+        // Brzda
+        if (Input.GetKey(KeyCode.Space)) //(handbrake)
         {
             wheelColliderLeftBack.brakeTorque = brakeTorque;
             wheelColliderRightBack.brakeTorque = brakeTorque;
