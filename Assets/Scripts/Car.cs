@@ -7,22 +7,22 @@ using UnityEngine.InputSystem;
 public class Car : MonoBehaviour
 {
     [Header("Wheel Colliders")]
-    public WheelCollider wheelColliderLeftFront;
-    public WheelCollider wheelColliderRightFront;
-    public WheelCollider wheelColliderLeftBack;
-    public WheelCollider wheelColliderRightBack;
+    [SerializeField] private WheelCollider wheelColliderLeftFront;
+    [SerializeField] private WheelCollider wheelColliderRightFront;
+    [SerializeField] private WheelCollider wheelColliderLeftBack;
+    [SerializeField] private WheelCollider wheelColliderRightBack;
 
     [Header("Wheel Meshes")]
-    public Transform wheelLeftFront;
-    public Transform wheelRightFront;
-    public Transform wheelLeftBack;
-    public Transform wheelRightBack;
+    [SerializeField] private Transform wheelLeftFront;
+    [SerializeField] private Transform wheelRightFront;
+    [SerializeField] private Transform wheelLeftBack;
+    [SerializeField] private Transform wheelRightBack;
 
     [Header("Car Settings")]
-    public Transform centerOfMass;
-    public float motorTorque = 1500f;
-    public float brakeTorque = 3000f;
-    public float maxSteer = 25f;
+    [SerializeField] private Transform centerOfMass;
+    [SerializeField] private float motorTorque = 1500f;
+    [SerializeField] private float brakeTorque = 3000f;
+    [SerializeField] private float maxSteer = 25f;
 
     private Rigidbody rb;
 
@@ -31,6 +31,8 @@ public class Car : MonoBehaviour
     float brake;
     float steer;
     bool handbrake;*/
+
+    private SpawnCar spawner;
 
     void Start()
     {
@@ -42,6 +44,8 @@ public class Car : MonoBehaviour
         input.Vehicle.Steering.performed += ctx => steer = ctx.ReadValue<float>();
         input.Vehicle.Handbrake.performed += ctx => handbrake = ctx.ReadValue<float>() > 0.5f;
         input.Vehicle.Handbrake.canceled += ctx => handbrake = false;*/
+
+        spawner = GetComponent<SpawnCar>();
     }
 
     /*void Awake()
@@ -65,8 +69,8 @@ public class Car : MonoBehaviour
 
         float steer = Input.GetAxis("Horizontal") * maxSteer;
         float throttle = Input.GetAxis("Vertical");
-        Debug.Log("Throttle: " + throttle);
-        Debug.Log("Steer: " + steer);
+        //Debug.Log("Throttle: " + throttle);
+        //Debug.Log("Steer: " + steer);
 
         wheelColliderLeftFront.steerAngle = steer;
         wheelColliderRightFront.steerAngle = steer;
@@ -87,16 +91,18 @@ public class Car : MonoBehaviour
             wheelColliderRightBack.brakeTorque = 0;
         }
 
+        if (Input.GetKey(KeyCode.R))
+            spawner.SpawnCarAtNearestPoint();
+
+        if (Input.GetKey(KeyCode.Backspace))
+            spawner.SpawnCarOnStart();
+
         UpdateWheelPose(wheelColliderLeftFront, wheelLeftFront, true);
         UpdateWheelPose(wheelColliderRightFront, wheelRightFront, false);
         UpdateWheelPose(wheelColliderLeftBack, wheelLeftBack, true);
         UpdateWheelPose(wheelColliderRightBack, wheelRightBack, false);
     }
 
-    /// <summary>
-    /// Synchronizuje fyzikální WheelCollider s vizuálním kolem.
-    /// Parametr isLeft urèuje, zda jde o levé kolo — pro otoèení disku.
-    /// </summary>
     void UpdateWheelPose(WheelCollider col, Transform wheel, bool isLeft)
     {
         Vector3 pos;
@@ -104,45 +110,9 @@ public class Car : MonoBehaviour
         col.GetWorldPose(out pos, out rot);
         wheel.position = pos;
 
-        // levá kola otoèíme o 180° kolem osy Y, aby disky nebyly zrcadlovì špatnì
         if (isLeft)
             wheel.rotation = rot * Quaternion.Euler(0, 180, 0);
         else
             wheel.rotation = rot;
     }
-
-    /*void FixedUpdate()
-    {
-        //wheelColliderLeftFront.steerAngle = maxSteer * Input.GetAxis("Horizontal");
-        //wheelColliderRightFront.steerAngle = maxSteer * Input.GetAxis("Horizontal");
-        if(Input.GetAxis("Vertical") != 0)
-        {
-            wheelColliderLeftBack.motorTorque = motorTorque * Input.GetAxis("Vertical");
-            wheelColliderRightBack.motorTorque = motorTorque * Input.GetAxis("Vertical");
-            //wheelColliderLeftFront.motorTorque = motorTorque * Input.GetAxis("Vertical");
-            //wheelColliderRightFront.motorTorque = motorTorque * Input.GetAxis("Vertical");
-        }
-    }
-
-    void Update()
-    {
-        var pos = Vector3.zero;
-        var rot = Quaternion.identity;
-
-        wheelColliderLeftFront.GetWorldPose(out pos, out rot);
-        wheelLeftFront.position = pos;
-        wheelLeftFront.rotation = rot * Quaternion.Euler(0, 180, 0);
-
-        wheelColliderRightFront.GetWorldPose(out pos, out rot);
-        wheelRightFront.position = pos;
-        wheelRightFront.rotation = rot;
-
-        wheelColliderLeftBack.GetWorldPose(out pos, out rot);
-        wheelLeftBack.position = pos;
-        wheelLeftBack.rotation = rot * Quaternion.Euler(0, 180, 0);
-
-        wheelColliderRightBack.GetWorldPose(out pos, out rot);
-        wheelRightBack.position = pos;
-        wheelRightBack.rotation = rot;
-    }*/
 }
