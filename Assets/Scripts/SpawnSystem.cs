@@ -5,7 +5,7 @@ using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.UI.Image;
 
-public class SpawnCar : MonoBehaviour
+public class SpawnSystem : MonoBehaviour
 {
     [SerializeField] private Transform car;
     [SerializeField] private Transform trackPointsParent;

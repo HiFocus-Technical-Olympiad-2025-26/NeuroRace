@@ -22,80 +22,47 @@ public class Car : MonoBehaviour
     [SerializeField] private Transform centerOfMass;
     [SerializeField] private float motorTorque = 1500f;
     [SerializeField] private float brakeTorque = 3000f;
-    [SerializeField] private float maxSteer = 25f;
+    [SerializeField] private float downforce = 50f;
+
+    [Header("Steer Settings")]
+    //[SerializeField] private float maxSteer = 25f;
+    [SerializeField] private float lowSpeedSteer = 20f;
+    [SerializeField] private float highSpeedSteer = 10f;
+    [SerializeField] private float steerSpeedThreshold = 25f;
 
     private Rigidbody rb;
 
-    /*InputActions input;
-    float throttle;
-    float brake;
-    float steer;
-    bool handbrake;*/
-
-    private SpawnCar spawner;
+    private SpawnSystem spawner;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.localPosition;
 
-        /*input.Vehicle.Throttle.performed += ctx => throttle = ctx.ReadValue<float>();
-        input.Vehicle.BrakeReverse.performed += ctx => brake = ctx.ReadValue<float>();
-        input.Vehicle.Steering.performed += ctx => steer = ctx.ReadValue<float>();
-        input.Vehicle.Handbrake.performed += ctx => handbrake = ctx.ReadValue<float>() > 0.5f;
-        input.Vehicle.Handbrake.canceled += ctx => handbrake = false;*/
-
-        spawner = GetComponent<SpawnCar>();
+        spawner = GetComponent<SpawnSystem>();
     }
-
-    /*void Awake()
-    {
-        input = new InputActions();
-    }
-
-    void OnEnable()
-    {
-        input.Enable();
-    }
-
-    void OnDisable()
-    {
-        input.Disable();
-    }*/
 
     void FixedUpdate()
     {
         rb.centerOfMass = centerOfMass.localPosition;
+        float speed = rb.velocity.magnitude; // current speed in m/s
+        //Debug.Log("speed: " + speed);
 
-        float steer = Input.GetAxis("Horizontal") * maxSteer;
-        float throttle = Input.GetAxis("Vertical");
-        //Debug.Log("Throttle: " + throttle);
-        //Debug.Log("Steer: " + steer);
+        float steerFactor = Mathf.Clamp01(speed / steerSpeedThreshold);
+        float currentMaxSteer = Mathf.Lerp(lowSpeedSteer, highSpeedSteer, steerFactor);
+        //Debug.Log("Steer: " + currentMaxSteer);
 
-        wheelColliderLeftFront.steerAngle = steer;
-        wheelColliderRightFront.steerAngle = steer;
+        wheelColliderLeftFront.steerAngle = wheelColliderRightFront.steerAngle = InputManager.Instance.steerValue * currentMaxSteer;
+        wheelColliderLeftBack.motorTorque = wheelColliderRightBack.motorTorque = InputManager.Instance.throttleValue * motorTorque;
+        wheelColliderLeftBack.brakeTorque = wheelColliderRightBack.brakeTorque = wheelColliderLeftFront.brakeTorque = wheelColliderRightFront.brakeTorque = InputManager.Instance.handbrakePressed ? brakeTorque : 0;
 
-        // Pohon zadních kol
-        wheelColliderLeftBack.motorTorque = throttle * motorTorque;
-        wheelColliderRightBack.motorTorque = throttle * motorTorque;
-
-        // Brzda
-        if (Input.GetKey(KeyCode.Space)) //(handbrake)
-        {
-            wheelColliderLeftBack.brakeTorque = brakeTorque;
-            wheelColliderRightBack.brakeTorque = brakeTorque;
-        }
-        else
-        {
-            wheelColliderLeftBack.brakeTorque = 0;
-            wheelColliderRightBack.brakeTorque = 0;
-        }
-
-        if (Input.GetKey(KeyCode.R))
+        if (InputManager.Instance.spawnPressed)
             spawner.SpawnCarAtNearestPoint();
 
-        if (Input.GetKey(KeyCode.Backspace))
+        if (InputManager.Instance.spawnOnStartPressed)
             spawner.SpawnCarOnStart();
+
+        rb.AddForce(downforce * speed * speed * -transform.up); // downforce
 
         UpdateWheelPose(wheelColliderLeftFront, wheelLeftFront, true);
         UpdateWheelPose(wheelColliderRightFront, wheelRightFront, false);

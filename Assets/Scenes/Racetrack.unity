@@ -504,13 +504,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3179265310439773821, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179265310439773821, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+      propertyPath: m_Mass
+      value: 800
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179265310439773821, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3179265310439773822, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: brakeTorque
-      value: 2500
+      value: 4000
       objectReference: {fileID: 0}
     - target: {fileID: 3179265310439773822, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: motorTorque
-      value: 700
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 3179265310439773823, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_RootOrder
