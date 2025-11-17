@@ -23,6 +23,8 @@ public class InputManager : MonoBehaviour
     public bool prevCamPressed { get; private set; } = false;
     private bool prevCamPressedPrev = false;
 
+    public float RotationCamValue { get; private set; } = 0f;
+
 
     void Awake()
     {
@@ -36,6 +38,8 @@ public class InputManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    float BoolToFloat(bool b) => b ? 1f : 0f;
+
     void Update()
     {
         steerValue = Input.GetAxis("Horizontal");
@@ -47,6 +51,8 @@ public class InputManager : MonoBehaviour
 
         nextCamPressed = CheckPressed(ref nextCamPressedPrev, Input.GetKey(KeyCode.C) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift));
         prevCamPressed = CheckPressed(ref prevCamPressedPrev, Input.GetKey(KeyCode.C) && (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)));
+
+        RotationCamValue = 0f + BoolToFloat(Input.GetKey(KeyCode.Q)) - BoolToFloat(Input.GetKey(KeyCode.E));
     }
 
     private bool CheckPressed(ref bool prevState, bool currentState)
