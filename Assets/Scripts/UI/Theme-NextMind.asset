@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be1f089040dad8c43b4ab6aa5a995f74, type: 3}
   m_Name: Theme-NextMind
   m_EditorClassIdentifier: Assembly-CSharp::UITheme
-  backgroundColor: {r: 0.039215688, g: 0.05882353, b: 0.12156863, a: 0}
-  accentColor: {r: 0, g: 0.8980392, b: 1, a: 0}
-  accentColor2: {r: 0.4862745, g: 0.22745098, b: 0.92941177, a: 0}
-  textColor: {r: 0, g: 0, b: 0, a: 0}
-  secondaryTextColor: {r: 1, g: 1, b: 1, a: 0}
+  backgroundColor: {r: 0.039215688, g: 0.05882353, b: 0.12156863, a: 1}
+  accentColor: {r: 0, g: 0.8980392, b: 1, a: 1}
+  accentColor2: {r: 0.4862745, g: 0.22745098, b: 0.92941177, a: 1}
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  secondaryTextColor: {r: 1, g: 1, b: 1, a: 1}

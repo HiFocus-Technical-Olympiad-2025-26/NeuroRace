@@ -61,7 +61,7 @@ public class UIThemeElement : MonoBehaviour
         UITheme theme = UIThemeManager.Instance.CurrentTheme;
         Color chosen = GetColor(theme);
 
-        Debug.Log($"Color of {type.ToString()}: {chosen.ToString()}");
+        //Debug.Log($"Color of {type.ToString()}: {chosen.ToString()}");
 
         switch (type)
         {
