@@ -9,9 +9,9 @@ public class SimpleOrbitCamera : MonoBehaviour
     public float rotationSpeed = 90f; // degrees per second while holding the button
 
     public float yaw = -90f;
-    public float pitch = 0f;
+    public float pitch = 20f;
 
-    public float pitchMin = -30f;
+    public float pitchMin = -3f;
     public float pitchMax = 60f;
 
     void Update()
@@ -23,8 +23,6 @@ public class SimpleOrbitCamera : MonoBehaviour
                             ? InputManager.Instance.camRotationMouse 
                             : InputManager.Instance.camRotation;
 
-        //float rotationXvalue = InputManager.Instance.camRotation.x; // -1 => x <= 1
-        //float input = InputManager.Instance.RotationCamValue; // -1,0,1
         yaw += rotation.x * rotationSpeed * Time.deltaTime;
         pitch -= rotation.y * rotationSpeed * Time.deltaTime;
 

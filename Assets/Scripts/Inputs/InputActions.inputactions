@@ -274,15 +274,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "80f2ace3-dd1e-46bc-9c75-ed5d4f3c610b",
+                    "name": "One Modifier",
+                    "id": "61465346-b6da-419f-a9de-72c93de38a31",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevCamera",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "56978ca1-3e5b-4651-b148-9b5d89fcdecd",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "32a73799-b89a-47d5-8cef-60336c4b8563",
                     "path": "<Keyboard>/c",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PrevCamera",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
