@@ -51,10 +51,27 @@ public class Car : MonoBehaviour
         float steerFactor = Mathf.Clamp01(speed / steerSpeedThreshold);
         float currentMaxSteer = Mathf.Lerp(lowSpeedSteer, highSpeedSteer, steerFactor);
         //Debug.Log("Steer: " + currentMaxSteer);
-
         wheelColliderLeftFront.steerAngle = wheelColliderRightFront.steerAngle = InputManager.Instance.steerValue * currentMaxSteer;
-        wheelColliderLeftBack.motorTorque = wheelColliderRightBack.motorTorque = InputManager.Instance.throttleValue * motorTorque;
-        wheelColliderLeftBack.brakeTorque = wheelColliderRightBack.brakeTorque = wheelColliderLeftFront.brakeTorque = wheelColliderRightFront.brakeTorque = InputManager.Instance.handbrakePressed ? brakeTorque : 0;
+
+
+        float brake = 0;
+        float reverse = 0;
+        float brakeReverse = InputManager.Instance.brakeValue;
+        if (speed > 2)
+            brake = brakeReverse;
+        else
+            reverse = brakeReverse;
+
+        float finalBrakeTorque = brake * brakeTorque;
+        float finalMotorTorque;
+        if (reverse > 0)
+            finalMotorTorque = -1 * reverse * motorTorque;
+        else
+            finalMotorTorque = InputManager.Instance.throttleValue * motorTorque;
+
+        wheelColliderLeftBack.motorTorque = wheelColliderRightBack.motorTorque = finalMotorTorque;
+        wheelColliderLeftBack.brakeTorque = wheelColliderRightBack.brakeTorque = wheelColliderLeftFront.brakeTorque = wheelColliderRightFront.brakeTorque = finalBrakeTorque;
+
 
         if (InputManager.Instance.spawnPressed)
             spawner.SpawnCarAtNearestPoint();

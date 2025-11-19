@@ -20,4 +20,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SDKDiscovery.unity
     guid: 87f24204a74213841bd5b0a5935f2762
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 08065abb69a343b47bcfa93274a5b7bc, type: 2}

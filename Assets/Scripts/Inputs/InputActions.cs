@@ -24,40 +24,94 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""Vehicle"",
-            ""id"": ""b695002a-381d-40d4-b65c-64cb4e0dd417"",
+            ""name"": ""GamePlay"",
+            ""id"": ""ad0d66f6-8732-4020-abd1-f3a21aa6c66c"",
             ""actions"": [
                 {
-                    ""name"": ""Handbrake"",
-                    ""type"": ""Button"",
-                    ""id"": ""62e81124-e7ef-4edb-962b-f4bae3e7df31"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Steer"",
+                    ""type"": ""Value"",
+                    ""id"": ""ecc121ef-259f-4be4-8a3d-4bf473950558"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Steering"",
-                    ""type"": ""Button"",
-                    ""id"": ""9fbce11f-4c4c-46b6-8809-7eb7c44f15ed"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""BrakeReverse"",
-                    ""type"": ""Button"",
-                    ""id"": ""474af12e-4e6a-4554-b4e1-71eccbe37b3f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Throttle"",
+                    ""type"": ""Value"",
+                    ""id"": ""a8231a29-c343-4c2c-9fae-7e40ba9a1c65"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Value"",
+                    ""id"": ""a4ac03b9-97e9-4297-854f-18c1fb789de2"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraRotate"",
+                    ""type"": ""Value"",
+                    ""id"": ""4d0ee68b-a2e7-4c92-b746-0d7e81dc5577"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CameraRotateMouse"",
                     ""type"": ""Button"",
-                    ""id"": ""269fd74d-f51e-4d5d-9af4-47611dc323c4"",
+                    ""id"": ""85f6448d-8eaa-4572-9c24-a7ad3aae4f72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e8e1327-e2bf-42fa-ba8e-391218baf951"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PrevCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""2ef0edfa-3273-4b57-ba04-133833d036be"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Respawn"",
+                    ""type"": ""Button"",
+                    ""id"": ""60a4ff3f-5b83-444c-a633-3adae2937b27"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SpawnStart"",
+                    ""type"": ""Button"",
+                    ""id"": ""f7237a83-2ad0-492c-9c6f-8197dcf52f09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Quit"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4cf6bf9-d62f-46dd-b5db-e3534d12b344"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,224 +121,373 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""96950fa7-5a84-4271-8609-39def000aeba"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""d9eabced-9bdd-4b9c-b8f3-ede59571efdd"",
+                    ""path"": ""<Gamepad>/leftStick/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Handbrake"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""WSAD"",
-                    ""id"": ""4e2a3344-cf50-4bfd-bffa-93840319ea12"",
+                    ""name"": ""Keyboard WSAD"",
+                    ""id"": ""366244aa-715f-42d8-a325-97cce6051ccf"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""fdb5d7d8-665d-430d-8684-4fb9af720375"",
+                    ""id"": ""b49ae020-6852-4f11-a840-a14279b6ab2d"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""3bfafe67-d1c0-4b72-8ad7-311ae7833f28"",
+                    ""id"": ""2f37af3a-6b73-4214-b103-745070660759"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Arrows"",
-                    ""id"": ""b90b210f-0cd3-4f51-9952-dcc6f362d4b9"",
+                    ""name"": ""Keyboard arrows"",
+                    ""id"": ""e75d1df8-72a6-4526-94e0-46f84ceb8d28"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""f8f433e8-3356-4aad-b5ea-0a4c8bf9b699"",
+                    ""id"": ""83c50c83-bfca-4c6d-b08c-103f925e280d"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""f1c83264-3c96-463f-a20b-8914f4cf4b3a"",
+                    ""id"": ""f3d890bc-5056-4bd8-be4f-f0d3ccd774c7"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""Steer"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""WSAD"",
-                    ""id"": ""fb530299-9648-4eb5-9055-c878169d2929"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""68e930f2-915d-4006-bdb9-da9b08459b93"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""36730413-f42f-499e-bd54-9f1c1f3ab55b"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Arrows"",
-                    ""id"": ""1adea088-7a2f-45c4-8b7b-c7335c4e952d"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""32d692c8-8926-4789-a20a-eb2b3d41339a"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""c1965ebb-ca86-4c59-8372-8ed1c4c24d1d"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""BrakeReverse"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Arrows"",
-                    ""id"": ""110155b1-2b33-47b6-bf87-18f72554f21e"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""00a9d02f-4bbf-44eb-8154-9976c30fcb6d"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""6175ceac-6911-422a-b534-75dbc78ac3b6"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""WSAD"",
-                    ""id"": ""2b993b65-37ff-416a-a167-7ffb5206e5f4"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""6dcf7f19-94ac-4002-bc34-77d4b67bd31a"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Throttle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""af1d18c6-c594-434f-8733-fa90df7e77a2"",
+                    ""name"": """",
+                    ""id"": ""fd5ac86c-6d74-4f12-b2ff-dca588ce6bae"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Throttle"",
                     ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d77fa381-923f-4157-961f-15a2826f592a"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74e7e53f-8b8e-46a0-acba-f7a2b2621aeb"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throttle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""405a7c5b-1818-4356-adc5-a5b77ea4cf2f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b82d15e9-4ffb-4e63-8008-6ba1d3f839ce"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec3dfe9f-0428-461d-8703-9e730f3f1528"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2995e145-2f16-478a-9f63-299ab15e6256"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""523bc40e-9141-43e5-bb3f-90252fa36e2c"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1c38106f-4bd1-4718-9243-47cdc719f49e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""80f2ace3-dd1e-46bc-9c75-ed5d4f3c610b"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PrevCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d07ab99b-7e2c-408c-83f4-4e0840858bd5"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd357f0e-d1ea-40e1-9427-6434e16f3beb"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37e78507-3186-4c39-9a64-8125e4411625"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4798d16-86f0-4d9b-85fb-9844aec051f5"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SpawnStart"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8aee6db1-3967-4d92-b082-dec5a1481f6c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31e7e011-a01d-4bda-9d9b-c2b025872756"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Mouse"",
+                    ""id"": ""00f9482e-8d00-45a1-9c37-8fa91296bcfc"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotateMouse"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""819fb555-930f-46a6-abaf-2009b29a8dca"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotateMouse"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""882fed70-6b77-4d2e-bc0a-1ee2827893a9"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotateMouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7f6ed663-fd20-4cac-a8f0-925e80f27c85"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9e5eaffb-0201-4905-adb5-b1c3f28e792e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""adee8dcd-d008-4652-9c15-c7deea5d676b"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""8d387237-ea0e-439b-a0bd-74e03e1c7234"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""d5f9887c-ff6e-4bb0-84e4-31e76092021c"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edd041bc-46e9-4d9b-8461-5181b12c2235"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CameraRotate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // Vehicle
-        m_Vehicle = asset.FindActionMap("Vehicle", throwIfNotFound: true);
-        m_Vehicle_Handbrake = m_Vehicle.FindAction("Handbrake", throwIfNotFound: true);
-        m_Vehicle_Steering = m_Vehicle.FindAction("Steering", throwIfNotFound: true);
-        m_Vehicle_BrakeReverse = m_Vehicle.FindAction("BrakeReverse", throwIfNotFound: true);
-        m_Vehicle_Throttle = m_Vehicle.FindAction("Throttle", throwIfNotFound: true);
+        // GamePlay
+        m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
+        m_GamePlay_Steer = m_GamePlay.FindAction("Steer", throwIfNotFound: true);
+        m_GamePlay_Throttle = m_GamePlay.FindAction("Throttle", throwIfNotFound: true);
+        m_GamePlay_Brake = m_GamePlay.FindAction("Brake", throwIfNotFound: true);
+        m_GamePlay_CameraRotate = m_GamePlay.FindAction("CameraRotate", throwIfNotFound: true);
+        m_GamePlay_CameraRotateMouse = m_GamePlay.FindAction("CameraRotateMouse", throwIfNotFound: true);
+        m_GamePlay_NextCamera = m_GamePlay.FindAction("NextCamera", throwIfNotFound: true);
+        m_GamePlay_PrevCamera = m_GamePlay.FindAction("PrevCamera", throwIfNotFound: true);
+        m_GamePlay_Respawn = m_GamePlay.FindAction("Respawn", throwIfNotFound: true);
+        m_GamePlay_SpawnStart = m_GamePlay.FindAction("SpawnStart", throwIfNotFound: true);
+        m_GamePlay_Quit = m_GamePlay.FindAction("Quit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -343,80 +546,134 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Vehicle
-    private readonly InputActionMap m_Vehicle;
-    private List<IVehicleActions> m_VehicleActionsCallbackInterfaces = new List<IVehicleActions>();
-    private readonly InputAction m_Vehicle_Handbrake;
-    private readonly InputAction m_Vehicle_Steering;
-    private readonly InputAction m_Vehicle_BrakeReverse;
-    private readonly InputAction m_Vehicle_Throttle;
-    public struct VehicleActions
+    // GamePlay
+    private readonly InputActionMap m_GamePlay;
+    private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
+    private readonly InputAction m_GamePlay_Steer;
+    private readonly InputAction m_GamePlay_Throttle;
+    private readonly InputAction m_GamePlay_Brake;
+    private readonly InputAction m_GamePlay_CameraRotate;
+    private readonly InputAction m_GamePlay_CameraRotateMouse;
+    private readonly InputAction m_GamePlay_NextCamera;
+    private readonly InputAction m_GamePlay_PrevCamera;
+    private readonly InputAction m_GamePlay_Respawn;
+    private readonly InputAction m_GamePlay_SpawnStart;
+    private readonly InputAction m_GamePlay_Quit;
+    public struct GamePlayActions
     {
         private @InputActions m_Wrapper;
-        public VehicleActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Handbrake => m_Wrapper.m_Vehicle_Handbrake;
-        public InputAction @Steering => m_Wrapper.m_Vehicle_Steering;
-        public InputAction @BrakeReverse => m_Wrapper.m_Vehicle_BrakeReverse;
-        public InputAction @Throttle => m_Wrapper.m_Vehicle_Throttle;
-        public InputActionMap Get() { return m_Wrapper.m_Vehicle; }
+        public GamePlayActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Steer => m_Wrapper.m_GamePlay_Steer;
+        public InputAction @Throttle => m_Wrapper.m_GamePlay_Throttle;
+        public InputAction @Brake => m_Wrapper.m_GamePlay_Brake;
+        public InputAction @CameraRotate => m_Wrapper.m_GamePlay_CameraRotate;
+        public InputAction @CameraRotateMouse => m_Wrapper.m_GamePlay_CameraRotateMouse;
+        public InputAction @NextCamera => m_Wrapper.m_GamePlay_NextCamera;
+        public InputAction @PrevCamera => m_Wrapper.m_GamePlay_PrevCamera;
+        public InputAction @Respawn => m_Wrapper.m_GamePlay_Respawn;
+        public InputAction @SpawnStart => m_Wrapper.m_GamePlay_SpawnStart;
+        public InputAction @Quit => m_Wrapper.m_GamePlay_Quit;
+        public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(VehicleActions set) { return set.Get(); }
-        public void AddCallbacks(IVehicleActions instance)
+        public static implicit operator InputActionMap(GamePlayActions set) { return set.Get(); }
+        public void AddCallbacks(IGamePlayActions instance)
         {
-            if (instance == null || m_Wrapper.m_VehicleActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_VehicleActionsCallbackInterfaces.Add(instance);
-            @Handbrake.started += instance.OnHandbrake;
-            @Handbrake.performed += instance.OnHandbrake;
-            @Handbrake.canceled += instance.OnHandbrake;
-            @Steering.started += instance.OnSteering;
-            @Steering.performed += instance.OnSteering;
-            @Steering.canceled += instance.OnSteering;
-            @BrakeReverse.started += instance.OnBrakeReverse;
-            @BrakeReverse.performed += instance.OnBrakeReverse;
-            @BrakeReverse.canceled += instance.OnBrakeReverse;
+            if (instance == null || m_Wrapper.m_GamePlayActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GamePlayActionsCallbackInterfaces.Add(instance);
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
             @Throttle.started += instance.OnThrottle;
             @Throttle.performed += instance.OnThrottle;
             @Throttle.canceled += instance.OnThrottle;
+            @Brake.started += instance.OnBrake;
+            @Brake.performed += instance.OnBrake;
+            @Brake.canceled += instance.OnBrake;
+            @CameraRotate.started += instance.OnCameraRotate;
+            @CameraRotate.performed += instance.OnCameraRotate;
+            @CameraRotate.canceled += instance.OnCameraRotate;
+            @CameraRotateMouse.started += instance.OnCameraRotateMouse;
+            @CameraRotateMouse.performed += instance.OnCameraRotateMouse;
+            @CameraRotateMouse.canceled += instance.OnCameraRotateMouse;
+            @NextCamera.started += instance.OnNextCamera;
+            @NextCamera.performed += instance.OnNextCamera;
+            @NextCamera.canceled += instance.OnNextCamera;
+            @PrevCamera.started += instance.OnPrevCamera;
+            @PrevCamera.performed += instance.OnPrevCamera;
+            @PrevCamera.canceled += instance.OnPrevCamera;
+            @Respawn.started += instance.OnRespawn;
+            @Respawn.performed += instance.OnRespawn;
+            @Respawn.canceled += instance.OnRespawn;
+            @SpawnStart.started += instance.OnSpawnStart;
+            @SpawnStart.performed += instance.OnSpawnStart;
+            @SpawnStart.canceled += instance.OnSpawnStart;
+            @Quit.started += instance.OnQuit;
+            @Quit.performed += instance.OnQuit;
+            @Quit.canceled += instance.OnQuit;
         }
 
-        private void UnregisterCallbacks(IVehicleActions instance)
+        private void UnregisterCallbacks(IGamePlayActions instance)
         {
-            @Handbrake.started -= instance.OnHandbrake;
-            @Handbrake.performed -= instance.OnHandbrake;
-            @Handbrake.canceled -= instance.OnHandbrake;
-            @Steering.started -= instance.OnSteering;
-            @Steering.performed -= instance.OnSteering;
-            @Steering.canceled -= instance.OnSteering;
-            @BrakeReverse.started -= instance.OnBrakeReverse;
-            @BrakeReverse.performed -= instance.OnBrakeReverse;
-            @BrakeReverse.canceled -= instance.OnBrakeReverse;
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
             @Throttle.started -= instance.OnThrottle;
             @Throttle.performed -= instance.OnThrottle;
             @Throttle.canceled -= instance.OnThrottle;
+            @Brake.started -= instance.OnBrake;
+            @Brake.performed -= instance.OnBrake;
+            @Brake.canceled -= instance.OnBrake;
+            @CameraRotate.started -= instance.OnCameraRotate;
+            @CameraRotate.performed -= instance.OnCameraRotate;
+            @CameraRotate.canceled -= instance.OnCameraRotate;
+            @CameraRotateMouse.started -= instance.OnCameraRotateMouse;
+            @CameraRotateMouse.performed -= instance.OnCameraRotateMouse;
+            @CameraRotateMouse.canceled -= instance.OnCameraRotateMouse;
+            @NextCamera.started -= instance.OnNextCamera;
+            @NextCamera.performed -= instance.OnNextCamera;
+            @NextCamera.canceled -= instance.OnNextCamera;
+            @PrevCamera.started -= instance.OnPrevCamera;
+            @PrevCamera.performed -= instance.OnPrevCamera;
+            @PrevCamera.canceled -= instance.OnPrevCamera;
+            @Respawn.started -= instance.OnRespawn;
+            @Respawn.performed -= instance.OnRespawn;
+            @Respawn.canceled -= instance.OnRespawn;
+            @SpawnStart.started -= instance.OnSpawnStart;
+            @SpawnStart.performed -= instance.OnSpawnStart;
+            @SpawnStart.canceled -= instance.OnSpawnStart;
+            @Quit.started -= instance.OnQuit;
+            @Quit.performed -= instance.OnQuit;
+            @Quit.canceled -= instance.OnQuit;
         }
 
-        public void RemoveCallbacks(IVehicleActions instance)
+        public void RemoveCallbacks(IGamePlayActions instance)
         {
-            if (m_Wrapper.m_VehicleActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_GamePlayActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IVehicleActions instance)
+        public void SetCallbacks(IGamePlayActions instance)
         {
-            foreach (var item in m_Wrapper.m_VehicleActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_GamePlayActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_VehicleActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_GamePlayActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public VehicleActions @Vehicle => new VehicleActions(this);
-    public interface IVehicleActions
+    public GamePlayActions @GamePlay => new GamePlayActions(this);
+    public interface IGamePlayActions
     {
-        void OnHandbrake(InputAction.CallbackContext context);
-        void OnSteering(InputAction.CallbackContext context);
-        void OnBrakeReverse(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
         void OnThrottle(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
+        void OnCameraRotate(InputAction.CallbackContext context);
+        void OnCameraRotateMouse(InputAction.CallbackContext context);
+        void OnNextCamera(InputAction.CallbackContext context);
+        void OnPrevCamera(InputAction.CallbackContext context);
+        void OnRespawn(InputAction.CallbackContext context);
+        void OnSpawnStart(InputAction.CallbackContext context);
+        void OnQuit(InputAction.CallbackContext context);
     }
 }
