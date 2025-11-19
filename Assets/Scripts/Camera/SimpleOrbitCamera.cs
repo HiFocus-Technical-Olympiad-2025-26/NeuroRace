@@ -9,27 +9,29 @@ public class SimpleOrbitCamera : MonoBehaviour
     public float rotationSpeed = 90f; // degrees per second while holding the button
 
     public float yaw = -90f;
+    public float pitch = 0f;
+
+    public float pitchMin = -30f;
+    public float pitchMax = 60f;
 
     void Update()
     {
         if (target == null || distanceTarget == null)
             return;
 
-        float rotationXvalue = InputManager.Instance.camRotation.x; // -1 => x <= 1
+        Vector2 rotation = InputManager.Instance.camRotationMouse != Vector2.zero 
+                            ? InputManager.Instance.camRotationMouse 
+                            : InputManager.Instance.camRotation;
+
+        //float rotationXvalue = InputManager.Instance.camRotation.x; // -1 => x <= 1
         //float input = InputManager.Instance.RotationCamValue; // -1,0,1
-        yaw += rotationXvalue * rotationSpeed * Time.deltaTime;
+        yaw += rotation.x * rotationSpeed * Time.deltaTime;
+        pitch -= rotation.y * rotationSpeed * Time.deltaTime;
 
-        /*input.GamePlay.CameraRotate.performed += ctx =>
-        {
-            Vector2 v = ctx.ReadValue<Vector2>();
+        pitch = Mathf.Clamp(pitch, pitchMin, pitchMax);
 
-            if (ctx.control.device is Mouse)
-                camRotation = v * mouseSensitivity * Time.deltaTime;
-            else
-                camRotation = v;
-        };*/
-
-        Quaternion rot = Quaternion.Euler(distanceTarget.eulerAngles.x, yaw + target.rotation.eulerAngles.y + 90f, distanceTarget.eulerAngles.z);
+        Quaternion rot = Quaternion.Euler(pitch + target.rotation.eulerAngles.x + 0f, yaw + target.eulerAngles.y + 90f, distanceTarget.eulerAngles.z);
+        //Quaternion rot = Quaternion.Euler(distanceTarget.eulerAngles.x, yaw + target.rotation.eulerAngles.y + 90f, distanceTarget.eulerAngles.z);
 
         Vector3 offset = rot * Vector3.forward * -distanceTarget.localPosition.magnitude;
 

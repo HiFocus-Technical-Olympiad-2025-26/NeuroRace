@@ -737,9 +737,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 64017515}
-  distanceTarget: {fileID: 1337714941}
+  distanceTarget: {fileID: 1601963908}
   rotationSpeed: 90
   yaw: -90
+  pitch: 20
+  pitchMin: -3
+  pitchMax: 60
 --- !u!64 &823861482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -910,11 +913,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
---- !u!4 &1337714941 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3179265310909746872, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
-  m_PrefabInstance: {fileID: 1322298693}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1448207321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1012,6 +1010,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4687104633059315549, guid: fa61f830bdcc614498c70c62e720a6ad, type: 3}
   m_PrefabInstance: {fileID: 1448207321}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1601963908 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8833302816018975845, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+  m_PrefabInstance: {fileID: 1322298693}
   m_PrefabAsset: {fileID: 0}
 --- !u!64 &1670029617
 MeshCollider:
