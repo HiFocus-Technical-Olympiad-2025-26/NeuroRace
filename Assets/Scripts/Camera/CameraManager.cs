@@ -1,33 +1,52 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
     public List<Camera> cameras = new List<Camera>();
-    public int currentCameraIndex = 0;
+    public int currentCamIndex = 0;
+
+    void Start()
+    {
+        if (cameras.Count == 0)
+        {
+            Debug.Log("Camera list is empty");
+            return;
+        }
+
+        if (currentCamIndex < 0 ||  currentCamIndex >= cameras.Count)
+            currentCamIndex = (currentCamIndex + cameras.Count) % cameras.Count;
+
+        for (int i = 0; i < cameras.Count; i++)
+        {
+            cameras[i].enabled = (i == currentCamIndex);
+            if (cameras[i].enabled)
+                NeuroCameraBinder.AssignCamera(cameras[i]);
+        }
+    }
 
     void Update()
     {
         if (InputManager.Instance.ConsumeNextCamPressed())
-            currentCameraIndex++;
+            SetCameraIndex(currentCamIndex + 1);
 
         if (InputManager.Instance.ConsumePrevCamPressed())
-            currentCameraIndex--;
+            SetCameraIndex(currentCamIndex - 1);
+    }
 
-        if (currentCameraIndex >= cameras.Count)
-            currentCameraIndex = (currentCameraIndex + 1) % cameras.Count;
-
-        if (currentCameraIndex < 0)
-            currentCameraIndex = (currentCameraIndex - 1 + cameras.Count) % cameras.Count;
-
-        for (int i = 0; i < cameras.Count; i++)
+    public void SetCameraIndex(int newIndex)
+    {
+        if (cameras.Count == 0)
         {
-            cameras[i].enabled = (i == currentCameraIndex);
-            if (cameras[i].enabled)
-                NeuroCameraBinder.AssignCamera(cameras[i]);
+            Debug.Log("Camera list is empty");
+            return;
         }
 
-        //Debug.Log("currentCameraIndex: " + currentCameraIndex);
+        cameras[currentCamIndex].enabled = false;
+        currentCamIndex = (newIndex + cameras.Count) % cameras.Count;
+        cameras[currentCamIndex].enabled = true;
+        NeuroCameraBinder.AssignCamera(cameras[currentCamIndex]);
     }
 }
