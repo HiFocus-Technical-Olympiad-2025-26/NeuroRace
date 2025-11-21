@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SmoothFollowCamera : MonoBehaviour
 {
-    public Transform cameraTarget;
-    public float smoothSpeed = 0f;
+    public Transform camTarget;  // object to follow
+    public float smoothY = 0.08f; // vertical smoothing
+    public float smoothRotation = 0.1f; // overall rotation smoothing
 
-    private Vector3 velocity = Vector3.zero;
-    private bool wasCamEnabledLastTime;
+    private float yVelocity = 0f; // used by SmoothDamp
+    private bool wasCamEnabledLastTime = false;
 
     void Start()
     {
-        ResetCameraPosition();
+        ResetCameraInstant();
     }
 
     void Update()
@@ -24,22 +25,35 @@ public class SmoothFollowCamera : MonoBehaviour
         }
         else if (!wasCamEnabledLastTime)
         {
-            ResetCameraPosition();
+            ResetCameraInstant();
             wasCamEnabledLastTime = true;
         }
 
-        // position
-        this.transform.position = Vector3.SmoothDamp(this.transform.position, cameraTarget.position, ref velocity, smoothSpeed);
+        // XZ snaps immediately, Y is smoothed
+        Vector3 targetPos = camTarget.position;
 
-        // rotation
-        Quaternion targetRotation = Quaternion.LookRotation(cameraTarget.forward, cameraTarget.up);
-        this.transform.rotation = Quaternion.Slerp(this.transform.rotation, targetRotation, smoothSpeed);
+        float newY = Mathf.SmoothDamp(
+            transform.position.y,
+            targetPos.y,
+            ref yVelocity,
+            smoothY
+        );
+
+        transform.position = new Vector3(
+            targetPos.x,
+            newY,
+            targetPos.z
+        );
+
+        Quaternion targetRot = camTarget.rotation;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, smoothRotation);
     }
 
-    private void ResetCameraPosition()
+    private void ResetCameraInstant()
     {
-        velocity = Vector3.zero;
-        this.transform.position = cameraTarget.position;
-        this.transform.rotation = Quaternion.LookRotation(cameraTarget.forward, cameraTarget.up);
+        yVelocity = 0f;
+        this.transform.position = camTarget.position;
+        this.transform.rotation = camTarget.rotation;
     }
 }

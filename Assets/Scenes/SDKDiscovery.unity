@@ -350,8 +350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3856c53aabeaa5c478f3041bd2548877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTarget: {fileID: 705202556}
-  smoothSpeed: 0
+  camTarget: {fileID: 705202556}
+  smoothY: 0.08
+  smoothRotation: 0.05
 --- !u!81 &275222379
 AudioListener:
   m_ObjectHideFlags: 0
@@ -548,8 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3856c53aabeaa5c478f3041bd2548877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTarget: {fileID: 498909059}
-  smoothSpeed: 0
+  camTarget: {fileID: 498909059}
+  smoothY: 0.08
+  smoothRotation: 0.05
 --- !u!81 &521325357
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1495,8 +1497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3856c53aabeaa5c478f3041bd2548877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTarget: {fileID: 219340597}
-  smoothSpeed: 0
+  camTarget: {fileID: 219340597}
+  smoothY: 0.08
+  smoothRotation: 0.05
 --- !u!81 &1765076421
 AudioListener:
   m_ObjectHideFlags: 0
