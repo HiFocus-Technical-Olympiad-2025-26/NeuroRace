@@ -19,9 +19,11 @@ public class SimpleOrbitCamera : MonoBehaviour
         if (target == null || distanceTarget == null)
             return;
 
-        Vector2 rotation = InputManager.Instance.camRotationMouse != Vector2.zero 
-                            ? InputManager.Instance.camRotationMouse 
-                            : InputManager.Instance.camRotation;
+        var input = InputManager.Instance.GamePlay;
+
+        Vector2 rotation = input.CamRotationMouse != Vector2.zero 
+                            ? input.CamRotationMouse 
+                            : input.CamRotation;
 
         yaw += rotation.x * rotationSpeed * Time.deltaTime;
         pitch -= rotation.y * rotationSpeed * Time.deltaTime;

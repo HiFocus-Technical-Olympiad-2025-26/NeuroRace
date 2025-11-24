@@ -21,13 +21,15 @@ public class SmoothFollowCameraManager : MonoBehaviour
     {
         bool cameraChanged = false;
 
-        if (InputManager.Instance.ConsumeNextCamPressed())
+        var input = InputManager.Instance.GamePlay;
+
+        if (input.ConsumeNextCam())
         {
             currentCameraIndex = (currentCameraIndex + 1) % cameraTargets.Count;
             cameraChanged = true;
         }
 
-        if (InputManager.Instance.ConsumePrevCamPressed())
+        if (input.ConsumePrevCam())
         {
             currentCameraIndex = (currentCameraIndex - 1 + cameraTargets.Count) % cameraTargets.Count;
             cameraChanged = true;

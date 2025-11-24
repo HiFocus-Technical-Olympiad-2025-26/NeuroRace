@@ -6,7 +6,7 @@ public class GameQuitter : MonoBehaviour
 {
     void Update()
     {
-        if (InputManager.Instance.ConsumeQuitPressed())
+        if (InputManager.Instance.GamePlay.ConsumeQuit())
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;

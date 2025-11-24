@@ -11,22 +11,23 @@ public class InputManager : MonoBehaviour
 
 	private InputActions input;
 
-	public bool quitPressed { get; private set; }
+    public GamePlayInput GamePlay { get; private set; }
+    public MenuInput Menu { get; private set; }
 
-	public float steerValue { get; private set; } = 0;
-	public float throttleValue { get; private set; } = 0;
-	public float brakeValue { get; private set; } = 0;
+    /*public bool Quit { get; private set; }
 
-	public bool spawnPressed { get; private set; } = false;
+	public float Steer { get; private set; } = 0;
+	public float Throttle { get; private set; } = 0;
+	public float Brake { get; private set; } = 0;
 
-	public bool spawnOnStartPressed { get; private set; } = false;
+	public bool Spawn { get; private set; } = false;
+	public bool SpawnOnStart { get; private set; } = false;
 
-	public bool nextCamPressed { get; private set; } = false;
+	public bool NextCam { get; private set; } = false;
+	public bool PrevCam { get; private set; } = false;
 
-	public bool prevCamPressed { get; private set; } = false;
-
-	public Vector2 camRotation {  get; private set; }
-	public Vector2 camRotationMouse { get; private set; }
+	public Vector2 CamRotation {  get; private set; }
+	public Vector2 CamRotationMouse { get; private set; }*/
 
 
 	void Awake()
@@ -42,24 +43,28 @@ public class InputManager : MonoBehaviour
 
 		input = new InputActions();
 
-		input.GamePlay.Steer.performed += ctx => steerValue = ctx.ReadValue<float>();
-		input.GamePlay.Steer.canceled += ctx => steerValue = 0f;
-
-		input.GamePlay.Throttle.performed += ctx => throttleValue = ctx.ReadValue<float>();
-		input.GamePlay.Throttle.canceled += ctx => throttleValue = 0f;
-
-		input.GamePlay.Brake.performed += ctx => brakeValue = ctx.ReadValue<float>();
-		input.GamePlay.Brake.canceled += ctx => brakeValue = 0f;
-
-		input.GamePlay.CameraRotate.performed += ctx => camRotation = ctx.ReadValue<Vector2>();
-		input.GamePlay.CameraRotate.canceled += ctx => camRotation = Vector2.zero;
-
-		input.GamePlay.CameraRotateMouse.performed += ctx => camRotationMouse = ctx.ReadValue<Vector2>();
-		input.GamePlay.CameraRotateMouse.canceled += ctx => camRotationMouse = Vector2.zero;
+        GamePlay = new GamePlayInput(input.GamePlay);
+        Menu = new MenuInput(input.Menu);
 
 
-		input.GamePlay.Quit.performed += _ => quitPressed = true;
-		input.GamePlay.Quit.canceled += _ => quitPressed = false;
+        /*input.GamePlay.Steer.performed += ctx => Steer = ctx.ReadValue<float>();
+		input.GamePlay.Steer.canceled += ctx => Steer = 0f;
+
+		input.GamePlay.Throttle.performed += ctx => Throttle = ctx.ReadValue<float>();
+		input.GamePlay.Throttle.canceled += ctx => Throttle = 0f;
+
+		input.GamePlay.Brake.performed += ctx => Brake = ctx.ReadValue<float>();
+		input.GamePlay.Brake.canceled += ctx => Brake = 0f;
+
+		input.GamePlay.CameraRotate.performed += ctx => CamRotation = ctx.ReadValue<Vector2>();
+		input.GamePlay.CameraRotate.canceled += ctx => CamRotation = Vector2.zero;
+
+		input.GamePlay.CameraRotateMouse.performed += ctx => CamRotationMouse = ctx.ReadValue<Vector2>();
+		input.GamePlay.CameraRotateMouse.canceled += ctx => CamRotationMouse = Vector2.zero;
+
+
+		input.GamePlay.Quit.performed += _ => Quit = true;
+		input.GamePlay.Quit.canceled += _ => Quit = false;
 
 		input.GamePlay.NextCamera.performed += ctx =>
 		{
@@ -67,71 +72,81 @@ public class InputManager : MonoBehaviour
 			if (ctx.control.device is Keyboard)
 			{
 				if (!Keyboard.current.shiftKey.isPressed)
-					nextCamPressed = true;
+					NextCam = true;
 				else 
-					nextCamPressed = false;
+					NextCam = false;
 			}
 			else
-				nextCamPressed = true;  // gamepad → allow always
+				NextCam = true;  // gamepad → allow always
 		};
-		input.GamePlay.NextCamera.canceled += _ => nextCamPressed = false;
+		input.GamePlay.NextCamera.canceled += _ => NextCam = false;
 
-		input.GamePlay.PrevCamera.performed += _ => prevCamPressed = true;
-		input.GamePlay.PrevCamera.canceled += _ => prevCamPressed = false;
+		input.GamePlay.PrevCamera.performed += _ => PrevCam = true;
+		input.GamePlay.PrevCamera.canceled += _ => PrevCam = false;
 
-		input.GamePlay.Respawn.performed += _ => spawnPressed = true;
-		input.GamePlay.Respawn.canceled += _ => spawnPressed = false;
+		input.GamePlay.Respawn.performed += _ => Spawn = true;
+		input.GamePlay.Respawn.canceled += _ => Spawn = false;
 
-		input.GamePlay.SpawnStart.performed += _ => spawnOnStartPressed = true;
-		input.GamePlay.SpawnStart.canceled += _ => spawnOnStartPressed = false;
+		input.GamePlay.SpawnStart.performed += _ => SpawnOnStart = true;
+		input.GamePlay.SpawnStart.canceled += _ => SpawnOnStart = false;*/
 
-		input.Enable();
+        //input.GamePlay.Enable();
+    }
+
+    void Update()
+    {
+        Menu?.Update();
+    }
+
+    public void InputMap_GamePlay()
+	{
+		input.Disable();
 		input.GamePlay.Enable();
-	}
+        Debug.Log("InputMap-GamePlay");
+    }
 
-	public void Input_GamePlay()
+	public void InputMap_Menu()
 	{
+		input.Disable();
+		input.Menu.Enable();
+        Debug.Log("InputMap-Menu");
+    }
 
-	}
-
-	public void Input_Menu()
+	/*#region Consume_Pressed
+	public bool ConsumeQuit()
 	{
-
-	}
-
-	public bool ConsumeQuitPressed()
-	{
-		bool value = quitPressed;
-		quitPressed = false;
+		bool value = Quit;
+		Quit = false;
 		return value;
 	}
 
-	public bool ConsumeSpawnPressed()
+	public bool ConsumeSpawn()
 	{
-		bool value = spawnPressed;
-		spawnPressed = false;
+		bool value = Spawn;
+		Spawn = false;
 		return value;
 	}
 
-	public bool ConsumeSpawnOnStartPressed()
+	public bool ConsumeSpawnOnStart()
 	{
-		bool value = spawnOnStartPressed;
-		spawnOnStartPressed = false;
+		bool value = SpawnOnStart;
+		SpawnOnStart = false;
 		return value;
 	}
 
 
-	public bool ConsumeNextCamPressed()
+	public bool ConsumeNextCam()
 	{
-		bool value = nextCamPressed;
-		nextCamPressed = false;
+		bool value = NextCam;
+		NextCam = false;
 		return value;
 	}
 
-	public bool ConsumePrevCamPressed()
+	public bool ConsumePrevCam()
 	{
-		bool value = prevCamPressed;
-		prevCamPressed = false;
+		bool value = PrevCam;
+		PrevCam = false;
 		return value;
 	}
+	#endregion*/
 }

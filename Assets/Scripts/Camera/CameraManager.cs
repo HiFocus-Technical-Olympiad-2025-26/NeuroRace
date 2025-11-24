@@ -29,10 +29,11 @@ public class CameraManager : MonoBehaviour
 
     void Update()
     {
-        if (InputManager.Instance.ConsumeNextCamPressed())
+        var input = InputManager.Instance.GamePlay;
+        if (input.ConsumeNextCam())
             SetCameraIndex(currentCamIndex + 1);
 
-        if (InputManager.Instance.ConsumePrevCamPressed())
+        if (input.ConsumePrevCam())
             SetCameraIndex(currentCamIndex - 1);
     }
 
