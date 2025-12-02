@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Car : MonoBehaviour
+public class AICar : MonoBehaviour
 {
     [Header("Wheel Colliders")]
     [SerializeField] private WheelCollider wheelColliderLeftFront;
@@ -37,6 +37,11 @@ public class Car : MonoBehaviour
     [SerializeField] private float highSpeedSteer = 10f;
     [SerializeField] private float steerSpeedThreshold = 25f;
 
+    [Header("AI")]
+    [SerializeField] private AIController controller;
+
+    public float speed { get; private set; } = 0f;
+
     private Rigidbody rb;
 
     private SpawnSystem spawner;
@@ -47,18 +52,15 @@ public class Car : MonoBehaviour
         rb.centerOfMass = centerOfMass.localPosition;
 
         spawner = GetComponent<SpawnSystem>();
-
-        InputManager.Instance.InputMap_GamePlay();
     }
 
     void FixedUpdate()
     {
-        var input = InputManager.Instance.GamePlay;
-        Debug.Log("Throttle: " + input.Throttle);
+        var input = controller;
 
         rb.centerOfMass = centerOfMass.localPosition;
 
-        float speed = rb.velocity.magnitude; // current speed in m/s
+        speed = rb.velocity.magnitude; // current speed in m/s
         //Debug.Log("speed: " + speed);
 
         // steering
