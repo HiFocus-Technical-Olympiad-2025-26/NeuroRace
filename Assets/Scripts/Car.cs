@@ -49,6 +49,8 @@ public class Car : MonoBehaviour
         spawner = GetComponent<SpawnSystem>();
 
         InputManager.Instance.InputMap_GamePlay();
+
+        spawner.SpawnCarOnStart();
     }
 
     void FixedUpdate()
@@ -58,7 +60,7 @@ public class Car : MonoBehaviour
         rb.centerOfMass = centerOfMass.localPosition;
 
         float speed = rb.velocity.magnitude; // current speed in m/s
-        Debug.Log("speed: " + speed);
+        //Debug.Log($"speed: {speed:F3}");
 
         // steering
         float steerFactor = Mathf.Clamp01(speed / steerSpeedThreshold);
