@@ -388,6 +388,14 @@ PrefabInstance:
       value: scene0
       objectReference: {fileID: 0}
     - target: {fileID: 5772243408818577054, guid: e2403c56af46d314fbc68b86f62a1315, type: 3}
+      propertyPath: configuration.simulateFocus
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772243408818577054, guid: e2403c56af46d314fbc68b86f62a1315, type: 3}
+      propertyPath: configuration.simulateDevice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5772243408818577054, guid: e2403c56af46d314fbc68b86f62a1315, type: 3}
       propertyPath: onDeviceConnected.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
