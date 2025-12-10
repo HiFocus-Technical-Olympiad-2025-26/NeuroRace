@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -64,12 +65,20 @@ public class GamePlayInput
 		g.PrevCamera.performed += _ => PrevCam = true;
 		g.PrevCamera.canceled += _ => PrevCam = false;
 
-		g.Respawn.performed += _ => Spawn = true;
-		g.Respawn.canceled += _ => Spawn = false;
+		g.Respawn.performed += _ => 
+		{
+            Spawn = true;
+            //Debug.Log("Spawn!");
+        };
+        g.Respawn.canceled += _ => Spawn = false;
 
-		g.SpawnStart.performed += _ => SpawnOnStart = true;
-		g.SpawnStart.canceled += _ => SpawnOnStart = false;
-	}
+		g.SpawnStart.performed += _ => 
+		{
+            SpawnOnStart = true;
+            //Debug.Log("Spawn on start!");
+        };
+        g.SpawnStart.canceled += _ => SpawnOnStart = false;	
+    }
 
 
     public bool ConsumeQuit()

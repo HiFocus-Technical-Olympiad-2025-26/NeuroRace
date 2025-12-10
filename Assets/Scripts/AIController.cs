@@ -18,11 +18,8 @@ public class AIController : MonoBehaviour
     private AICar car;
     private Instruction current_inst;
 
-    public float Throttle { get; private set; } = 1;
-    public float Steer { get; private set; } = 0;
-    public float Brake { get; private set; } = 0;
-    public bool Spawn { get; private set; } = false;
-    public bool SpawnOnStart { get; private set; } = false;
+    public CarInput carInput;
+
 
     private void Start()
     {
@@ -31,6 +28,8 @@ public class AIController : MonoBehaviour
 
     void FixedUpdate()
     {
+        carInput.Throttle = 1;
+
         var frontRay = new Ray(transform.position, transform.forward);
         RaycastHit frHitInfo;
         Physics.Raycast(frontRay, out frHitInfo, Mathf.Infinity, mask.value);
@@ -43,14 +42,15 @@ public class AIController : MonoBehaviour
         RaycastHit rrHitInfo;
         Physics.Raycast(rightRay, out rrHitInfo, Mathf.Infinity, mask.value);
 
-        Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance - rrHitInfo.distance, -1, 1);
+        carInput.Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance - rrHitInfo.distance, -1, 1);
 
         if (frHitInfo.distance < brakingDistance / (minimalSpeed / car.speed) && car.speed > minimalSpeed)
         {
-            Brake = 1;
+            carInput.Brake = 1;
         }
-        else {
-            Brake = 0;
+        else 
+        {
+            carInput.Brake = 0;
         }
     }
 

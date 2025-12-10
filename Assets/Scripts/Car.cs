@@ -35,35 +35,31 @@ public class Car : MonoBehaviour
     //[SerializeField] private float maxSteer = 25f;
     [SerializeField] private float lowSpeedSteer = 20f;
     [SerializeField] private float highSpeedSteer = 10f;
-    [SerializeField] private float steerSpeedThreshold = 25f;
+    [SerializeField] private float steerSpeedThreshold = 25f; 
+    
+    public float speed { get; private set; } = 0f;
 
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
-    private SpawnSystem spawner;
+    protected SpawnSystem spawner;
 
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.localPosition;
 
         spawner = GetComponent<SpawnSystem>();
-
-        InputManager.Instance.InputMap_GamePlay();
-
-        spawner.SpawnCarOnStart();
     }
 
-    void FixedUpdate()
-    {
-        var input = InputManager.Instance.GamePlay;
 
+    protected void ApplyPhysics(CarInput input)
+    {
         rb.centerOfMass = centerOfMass.localPosition;
 
-        float speed = rb.velocity.magnitude; // current speed in m/s
-        //Debug.Log($"speed: {speed:F3}");
+        this.speed = rb.velocity.magnitude; // current speed in m/s
 
         // steering
-        float steerFactor = Mathf.Clamp01(speed / steerSpeedThreshold);
+        float steerFactor = Mathf.Clamp01(this.speed / steerSpeedThreshold);
         float currentMaxSteer = Mathf.Lerp(lowSpeedSteer, highSpeedSteer, steerFactor);
         //Debug.Log("Steer: " + currentMaxSteer);
         wheelColliderLeftFront.steerAngle = wheelColliderRightFront.steerAngle = input.Steer * currentMaxSteer;
@@ -72,7 +68,7 @@ public class Car : MonoBehaviour
         float brake = 0;
         float reverse = 0;
         float brakeReverse = input.Brake;
-        if (speed > 2)
+        if (this.speed > 2)
             brake = brakeReverse;
         else
             reverse = brakeReverse;
@@ -87,12 +83,6 @@ public class Car : MonoBehaviour
         wheelColliderLeftBack.motorTorque = wheelColliderRightBack.motorTorque = finalMotorTorque;
         wheelColliderLeftBack.brakeTorque = wheelColliderRightBack.brakeTorque = wheelColliderLeftFront.brakeTorque = wheelColliderRightFront.brakeTorque = finalBrakeTorque;
 
-        //spawn
-        if (input.Spawn)
-            spawner.SpawnCarAtNearestPoint();
-        if (input.SpawnOnStart)
-            spawner.SpawnCarOnStart();
-
         //downforce
         float downforceTotal = downforceCoefficient * speed * speed;
         Vector3 down = -transform.up;
@@ -104,6 +94,7 @@ public class Car : MonoBehaviour
         UpdateWheelPose(wheelColliderLeftBack, wheelLeftBack, true);
         UpdateWheelPose(wheelColliderRightBack, wheelRightBack, false);
     }
+
 
     void UpdateWheelPose(WheelCollider col, Transform wheel, bool isLeft)
     {

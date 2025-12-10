@@ -10,15 +10,18 @@ public class SpawnSystem : MonoBehaviour
     [SerializeField] private Transform car;
     [SerializeField] private Transform trackPointsParent;
     [SerializeField] private int StartPoint = 0;
+    [SerializeField] private Transform startPointsParent;
 
-    private List<Transform> points = new List<Transform>();
+    private List<Transform> trackPoints = new List<Transform>();
+    private List<Transform> startPoints = new List<Transform>();
 
     void Awake()
     {
         foreach (Transform t in trackPointsParent)
-        {
-            points.Add(t);
-        }
+            trackPoints.Add(t);
+
+        foreach (Transform t in startPointsParent)
+            startPoints.Add(t);
     }
 
     public void SpawnCarOnStart()
@@ -27,27 +30,32 @@ public class SpawnSystem : MonoBehaviour
         Spawn(StartPoint);
     }
 
+    public void SpawnCarOnSpecificStart(int positionIndex)
+    {
+        car = startPoints[positionIndex];
+    }
+
     public void SpawnCarAtNearestPoint()
     {
         //Debug.Log("Nearest called");
 
-        if (points.Count == 0)
+        if (trackPoints.Count == 0)
             return;
 
-        Transform nearest = points[0];
+        Transform nearest = trackPoints[0];
         float minDist = Vector3.Distance(car.position, nearest.position);
 
-        for (int i = 1; i < points.Count; i++)
+        for (int i = 1; i < trackPoints.Count; i++)
         {
-            float dist = Vector3.Distance(car.position, points[i].position);
+            float dist = Vector3.Distance(car.position, trackPoints[i].position);
             if (dist < minDist)
             {
                 minDist = dist;
-                nearest = points[i];
+                nearest = trackPoints[i];
             }
         }
 
-        int index = points.IndexOf(nearest);
+        int index = trackPoints.IndexOf(nearest);
         this.Spawn(index);
     }
 
@@ -67,16 +75,16 @@ public class SpawnSystem : MonoBehaviour
 
         StopCar();
 
-        if (indexOfPoint > points.Count || points.Count == 0)
+        if (indexOfPoint > trackPoints.Count || trackPoints.Count == 0)
             return;
 
         Quaternion rotation;
-        if (indexOfPoint == points.Count - 1)
-            rotation = Quaternion.LookRotation(points[0].position - points[indexOfPoint].position, Vector3.up);
+        if (indexOfPoint == trackPoints.Count - 1)
+            rotation = Quaternion.LookRotation(trackPoints[0].position - trackPoints[indexOfPoint].position, Vector3.up);
         else
-            rotation = Quaternion.LookRotation(points[indexOfPoint + 1].position - points[indexOfPoint].position, Vector3.up);
+            rotation = Quaternion.LookRotation(trackPoints[indexOfPoint + 1].position - trackPoints[indexOfPoint].position, Vector3.up);
 
-        car.position = points[indexOfPoint].position;
+        car.position = trackPoints[indexOfPoint].position;
         car.rotation = rotation;
     }
 }
