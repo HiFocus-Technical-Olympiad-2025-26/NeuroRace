@@ -10,6 +10,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private int minimalSpeed = 10;
     [SerializeField] private float brakingThreshold = 15;
     [SerializeField] private int turnClearDistance = 20;
+    [SerializeField] private int collision = 5;
 
     [Header("Refferences")]
     [SerializeField] private Transform lrTransform;
@@ -68,6 +69,10 @@ public class AIController : MonoBehaviour
         else 
         {
             carInput.Brake = 0;
+        }
+
+        if (frHitInfo.distance < 5) {
+            carInput.Spawn = true;
         }
     }
 
