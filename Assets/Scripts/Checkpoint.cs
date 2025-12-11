@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct Instruction
+public enum Direction
 {
-    int checkpointid;
-    int rotation;
+    Left,
+    Right
 }
 
 public class Checkpoint : MonoBehaviour
 {
-    public Instruction instruction { get; private set; }
+    public int checkpoint_id;
+    public Direction direction;
+    public bool ignoreRules;
+    public bool removeCheckpointEffects;
 }

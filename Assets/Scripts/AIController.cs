@@ -8,18 +8,19 @@ public class AIController : MonoBehaviour
     [SerializeField] private float steeringDeadZone = 0.1f;
     [SerializeField] private LayerMask mask;
     [SerializeField] private int minimalSpeed = 10;
-    [SerializeField] private int brakingDistance = 15;
+    [SerializeField] private float brakingThreshold = 15;
+    [SerializeField] private int turnClearDistance = 20;
 
     [Header("Refferences")]
     [SerializeField] private Transform lrTransform;
     [SerializeField] private Transform rrTransform;
-    [SerializeField] private List<GameObject> checkpoints;
-
-    private AICar car;
-    private Instruction current_inst;
-
+    
     public CarInput carInput;
 
+    private AICar car;
+    private Checkpoint current_inst;
+    private bool follow_direction = false;
+    private bool ignoreRules = false;
 
     private void Start()
     {
@@ -44,9 +45,25 @@ public class AIController : MonoBehaviour
 
         carInput.Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance - rrHitInfo.distance, -1, 1);
 
-        if (frHitInfo.distance < brakingDistance / (minimalSpeed / car.speed) && car.speed > minimalSpeed)
+        if (frHitInfo.distance > turnClearDistance && follow_direction) {
+            follow_direction = false;
+        }
+
+        if (follow_direction) {
+            carInput.Steer = current_inst.direction == Direction.Left ? -1 : 1;
+        }
+
+        if (frHitInfo.distance == 0 || ignoreRules) {
+            carInput.Brake = 0;
+            return;
+        }
+
+        float braking_ratio = frHitInfo.distance / car.speed;
+
+        if (braking_ratio < brakingThreshold && car.speed > minimalSpeed)
         {
-            carInput.Brake = 1;
+            Debug.Log("Breaking, value: " + frHitInfo.distance / car.speed);
+            carInput.Brake = 1 / braking_ratio;
         }
         else 
         {
@@ -54,11 +71,17 @@ public class AIController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        Debug.DrawRay(transform.position, transform.forward * turnClearDistance, Color.red);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Checkpoint") {
-            current_inst = other.GetComponent<Checkpoint>().instruction;
-            other.gameObject.SetActive(false);
+            current_inst = other.GetComponent<Checkpoint>();
+            follow_direction = !current_inst.removeCheckpointEffects;
+            ignoreRules = current_inst.ignoreRules;
         }
     }
 }
