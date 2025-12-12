@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 3179265310810615417}
   m_Layer: 0
   m_Name: WheelColliderLeftFront
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 3179265311213091999}
   m_Layer: 0
   m_Name: WheelColliderRightFront
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -675,7 +675,7 @@ GameObject:
   - component: {fileID: 3179265311263835468}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -701,7 +701,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3179265311263835458}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 19f00cfa953113e46ad62d1d4a3f32e2, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -759,7 +759,7 @@ GameObject:
   - component: {fileID: 3179265311490922055}
   m_Layer: 0
   m_Name: WheelColliderRightBack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1027,7 +1027,7 @@ GameObject:
   - component: {fileID: 3179265311651118102}
   m_Layer: 0
   m_Name: WheelColliderLeftBack
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
