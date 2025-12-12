@@ -17,28 +17,32 @@ public class SpawnSystem : MonoBehaviour
 
     void Awake()
     {
-        foreach (Transform t in trackPointsParent)
-            trackPoints.Add(t);
+        if (trackPointsParent != null)
+        {
+            foreach (Transform t in trackPointsParent)
+                trackPoints.Add(t);
+        }
 
-        foreach (Transform t in startPointsParent)
-            startPoints.Add(t);
+        if (startPointsParent != null)
+        {
+            foreach (Transform t in startPointsParent)
+                startPoints.Add(t);
+        }
     }
 
     public void SpawnCarOnStart()
     {
-        //Debug.Log("Start called");
         Spawn(StartPoint);
     }
 
     public void SpawnCarOnSpecificStart(int positionIndex)
     {
-        car = startPoints[positionIndex];
+        car.position = startPoints[positionIndex].position;
+        car.rotation = startPoints[positionIndex].rotation;
     }
 
     public void SpawnCarAtNearestPoint()
     {
-        //Debug.Log("Nearest called");
-
         if (trackPoints.Count == 0)
             return;
 
@@ -56,11 +60,15 @@ public class SpawnSystem : MonoBehaviour
         }
 
         int index = trackPoints.IndexOf(nearest);
+
         this.Spawn(index);
     }
 
     public void StopCar()
     {
+        if (car == null)
+            return;
+
         Rigidbody rb = car.GetComponent<Rigidbody>();
         if (rb != null)
         {
@@ -71,20 +79,17 @@ public class SpawnSystem : MonoBehaviour
 
     public void Spawn(int indexOfPoint)
     {
-        //Debug.Log("SPAWN CALL: index=" + indexOfPoint);
-
         StopCar();
 
-        if (indexOfPoint > trackPoints.Count || trackPoints.Count == 0)
+        if (indexOfPoint >= trackPoints.Count || trackPoints.Count == 0)
             return;
 
-        Quaternion rotation;
-        if (indexOfPoint == trackPoints.Count - 1)
-            rotation = Quaternion.LookRotation(trackPoints[0].position - trackPoints[indexOfPoint].position, Vector3.up);
-        else
-            rotation = Quaternion.LookRotation(trackPoints[indexOfPoint + 1].position - trackPoints[indexOfPoint].position, Vector3.up);
+        Transform current = trackPoints[indexOfPoint];
+        Transform next = (indexOfPoint == trackPoints.Count - 1) ? trackPoints[0] : trackPoints[indexOfPoint + 1];
 
-        car.position = trackPoints[indexOfPoint].position;
+        Quaternion rotation = Quaternion.LookRotation(next.position - current.position, Vector3.up);
+
+        car.position = current.position;
         car.rotation = rotation;
     }
 }

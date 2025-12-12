@@ -45,15 +45,18 @@ public class AIController : MonoBehaviour
 
         carInput.Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance - rrHitInfo.distance, -1, 1);
 
-        if (frHitInfo.distance > turnClearDistance && follow_direction) {
+        if (frHitInfo.distance > turnClearDistance && follow_direction) 
+        {
             follow_direction = false;
         }
 
-        if (follow_direction) {
+        if (follow_direction) 
+        {
             carInput.Steer = current_inst.direction == Direction.Left ? -1 : 1;
         }
 
-        if (frHitInfo.distance == 0 || ignoreRules) {
+        if (frHitInfo.distance == 0 || ignoreRules) 
+        {
             carInput.Brake = 0;
             return;
         }
@@ -62,7 +65,7 @@ public class AIController : MonoBehaviour
 
         if (braking_ratio < brakingThreshold && car.speed > minimalSpeed)
         {
-            Debug.Log("Breaking, value: " + frHitInfo.distance / car.speed);
+            //Debug.Log("Breaking, value: " + frHitInfo.distance / car.speed);
             carInput.Brake = 1 / braking_ratio;
         }
         else 
@@ -78,7 +81,8 @@ public class AIController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Checkpoint") {
+        if (other.tag == "Checkpoint") 
+        {
             current_inst = other.GetComponent<Checkpoint>();
             follow_direction = !current_inst.removeCheckpointEffects;
             ignoreRules = current_inst.ignoreRules;
