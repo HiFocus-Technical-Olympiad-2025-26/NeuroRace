@@ -19,7 +19,7 @@ public class AIController : MonoBehaviour
     public CarInput carInput;
 
     private AICar car;
-    private Checkpoint current_inst;
+    private AICheckpoint current_inst;
     private bool follow_direction = false;
     private bool ignoreRules = false;
 
@@ -53,7 +53,7 @@ public class AIController : MonoBehaviour
 
         if (follow_direction) 
         {
-            carInput.Steer = current_inst.direction == Direction.Left ? -1 : 1;
+            carInput.Steer = current_inst.direction == AIDirection.Left ? -1 : 1;
         }
 
         if (frHitInfo.distance == 0 || ignoreRules) 
@@ -88,7 +88,7 @@ public class AIController : MonoBehaviour
     {
         if (other.tag == "Checkpoint") 
         {
-            current_inst = other.GetComponent<Checkpoint>();
+            current_inst = other.GetComponent<AICheckpoint>();
             follow_direction = !current_inst.removeCheckpointEffects;
             ignoreRules = current_inst.ignoreRules;
         }

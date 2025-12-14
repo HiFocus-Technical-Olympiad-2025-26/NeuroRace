@@ -5,6 +5,7 @@ using UnityEngine;
 public class UserCar : Car
 {
     public int StartPosition = 1;
+    [SerializeField] private FloatEventChannelSO speedEvent;
 
     protected override void Start()
     {
@@ -36,5 +37,8 @@ public class UserCar : Car
         };
 
         this.ApplyPhysics(input);
+
+        float speedKmh = Mathf.Abs(rb.velocity.magnitude) * 3.6f;
+        speedEvent?.RaiseEvent(speedKmh);
     }
 }

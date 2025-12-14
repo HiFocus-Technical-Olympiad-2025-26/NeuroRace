@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
+public enum AIDirection
 {
     Left,
     Right
 }
 
-public class Checkpoint : MonoBehaviour
+public class AICheckpoint : MonoBehaviour
 {
     public int checkpoint_id;
-    public Direction direction;
+    public AIDirection direction;
     public bool ignoreRules;
     public bool removeCheckpointEffects;
 }

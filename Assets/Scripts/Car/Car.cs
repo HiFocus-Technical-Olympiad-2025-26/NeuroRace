@@ -20,8 +20,8 @@ public class Car : MonoBehaviour
 
     [Header("Car Settings")]
     [SerializeField] private Transform centerOfMass;
-    [SerializeField] private float motorTorque = 1500f;
-    [SerializeField] private float brakeTorque = 3000f;
+    [SerializeField] private float motorTorque = 4000f;
+    [SerializeField] private float brakeTorque = 1500f;
 
     [Header("Downforce")]
     [SerializeField] private float downforceCoefficient = 0.8f; // Downforce coefficient k (F = k * v * v)
