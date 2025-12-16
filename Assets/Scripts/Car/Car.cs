@@ -108,4 +108,44 @@ public class Car : MonoBehaviour
         else
             wheel.rotation = rot;
     }
+
+    public void SetWheelParameters(WheelSetup setup)
+    {
+        ApplyWheelSetup(wheelColliderLeftFront, setup.front);
+        ApplyWheelSetup(wheelColliderRightFront, setup.front);
+
+        ApplyWheelSetup(wheelColliderLeftBack, setup.rear);
+        ApplyWheelSetup(wheelColliderRightBack, setup.rear);
+    }
+
+    private void ApplyWheelSetup(WheelCollider wc, WheelSetup.WheelAxleSetup setup)
+    {
+        wc.mass = setup.mass;
+        wc.wheelDampingRate = setup.wheelDampingRate;
+        wc.forceAppPointDistance = setup.forceAppPointDistance;
+
+        wc.suspensionDistance = setup.suspensionDistance;
+
+        JointSpring spring = wc.suspensionSpring;
+        spring.spring = setup.spring;
+        spring.damper = setup.damper;
+        spring.targetPosition = setup.targetPosition;
+        wc.suspensionSpring = spring;
+
+        WheelFrictionCurve forward = wc.forwardFriction;
+        forward.extremumSlip = setup.forwardExtremumSlip;
+        forward.extremumValue = setup.forwardExtremumValue;
+        forward.asymptoteSlip = setup.forwardAsymptoteSlip;
+        forward.asymptoteValue = setup.forwardAsymptoteValue;
+        forward.stiffness = setup.forwardStiffness;
+        wc.forwardFriction = forward;
+
+        WheelFrictionCurve sideways = wc.sidewaysFriction;
+        sideways.extremumSlip = setup.sidewaysExtremumSlip;
+        sideways.extremumValue = setup.sidewaysExtremumValue;
+        sideways.asymptoteSlip = setup.sidewaysAsymptoteSlip;
+        sideways.asymptoteValue = setup.sidewaysAsymptoteValue;
+        sideways.stiffness = setup.sidewaysStiffness;
+        wc.sidewaysFriction = sideways;
+    }
 }

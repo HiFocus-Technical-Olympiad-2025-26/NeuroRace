@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SDKDiscovery.unity
     guid: 87f24204a74213841bd5b0a5935f2762
+  - enabled: 1
+    path: Assets/Scenes/HUD.unity
+    guid: 95926d7d63af698408144f133c096143
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 08065abb69a343b47bcfa93274a5b7bc, type: 2}

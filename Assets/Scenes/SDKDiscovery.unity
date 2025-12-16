@@ -6171,7 +6171,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179265311490922055, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 2.8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3179265311490922055, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumSlip
@@ -6231,7 +6231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179265311651118102, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_SidewaysFriction.m_Stiffness
-      value: 2.8
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3179265311651118102, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_ForwardFriction.m_ExtremumSlip
