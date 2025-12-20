@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CarSettings", menuName = "Game/Car settings")]
+[CreateAssetMenu(fileName = "CarSettings", menuName = "Car/Car settings")]
 public class CarSettings : ScriptableObject
 {
     [Header("Torque")]

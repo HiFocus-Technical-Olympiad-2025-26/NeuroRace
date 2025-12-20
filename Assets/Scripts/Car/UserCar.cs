@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UserCar : Car
 {
-    public int StartPosition = 1;
     [SerializeField] private FloatEventChannelSO speedEvent;
 
     protected override void Start()
@@ -12,8 +11,6 @@ public class UserCar : Car
         base.Start();
 
         InputManager.Instance.InputMap_GamePlay();
-
-        spawner.SpawnCarOnSpecificStart(StartPosition);
     }
 
     void FixedUpdate()
@@ -22,9 +19,9 @@ public class UserCar : Car
 
         //spawn
         if (inputRaw.Spawn)
-            spawner.SpawnCarAtNearestPoint();
-        if (inputRaw.SpawnOnStart)
-            spawner.SpawnCarOnStart();
+            spawner.SpawnCarAtNearestPoint(this.transform);
+        /*if (inputRaw.SpawnOnStart)
+            spawner.SpawnCarOnSpecificStart(this.transform, 0);*/
 
 
         CarInput input = new CarInput

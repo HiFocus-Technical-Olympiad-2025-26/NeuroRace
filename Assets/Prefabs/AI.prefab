@@ -389,7 +389,6 @@ GameObject:
   - component: {fileID: 7996388320679422522}
   - component: {fileID: 7996388320679422502}
   - component: {fileID: 7996388320679422501}
-  - component: {fileID: 4821072868541978751}
   m_Layer: 0
   m_Name: AI
   m_TagString: AI
@@ -437,9 +436,11 @@ MonoBehaviour:
   wheelRightFront: {fileID: 7996388321689345994}
   wheelLeftBack: {fileID: 7996388320438762029}
   wheelRightBack: {fileID: 7996388321759437878}
+  defaultWheelSetup: {fileID: 0}
   centerOfMass: {fileID: 7996388321001957378}
   motorTorque: 1500
   brakeTorque: 3000
+  isThrottleEnabled: 1
   downforceCoefficient: 0.8
   frontDownforceRatio: 0.4
   rearDownforceRatio: 0.6
@@ -448,8 +449,8 @@ MonoBehaviour:
   lowSpeedSteer: 20
   highSpeedSteer: 10
   steerSpeedThreshold: 25
+  spawner: {fileID: 0}
   controller: {fileID: 7996388320679422501}
-  StartPosition: 0
 --- !u!54 &7996388320679422502
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -488,22 +489,6 @@ MonoBehaviour:
   collision: 5
   lrTransform: {fileID: 3566064743415301276}
   rrTransform: {fileID: 3566064743932805259}
---- !u!114 &4821072868541978751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996388320679422503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 546ff8335884cd6408d1607ce136859b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  car: {fileID: 7996388320679422500}
-  trackPointsParent: {fileID: 0}
-  StartPoint: 78
-  startPointsParent: {fileID: 0}
 --- !u!1 &7996388320744526506
 GameObject:
   m_ObjectHideFlags: 0

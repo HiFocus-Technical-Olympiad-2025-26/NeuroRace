@@ -17,11 +17,13 @@ public class Car : MonoBehaviour
     [SerializeField] private Transform wheelRightFront;
     [SerializeField] private Transform wheelLeftBack;
     [SerializeField] private Transform wheelRightBack;
+    public WheelSetup defaultWheelSetup;
 
     [Header("Car Settings")]
     [SerializeField] private Transform centerOfMass;
     [SerializeField] private float motorTorque = 4000f;
     [SerializeField] private float brakeTorque = 1500f;
+    public bool isThrottleEnabled = true;
 
     [Header("Downforce")]
     [SerializeField] private float downforceCoefficient = 0.8f; // Downforce coefficient k (F = k * v * v)
@@ -35,20 +37,20 @@ public class Car : MonoBehaviour
     //[SerializeField] private float maxSteer = 25f;
     [SerializeField] private float lowSpeedSteer = 20f;
     [SerializeField] private float highSpeedSteer = 10f;
-    [SerializeField] private float steerSpeedThreshold = 25f; 
+    [SerializeField] private float steerSpeedThreshold = 25f;
     
     public float speed { get; private set; } = 0f;
 
     protected Rigidbody rb;
 
-    protected SpawnSystem spawner;
+    public SpawnSystem spawner;
 
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.localPosition;
 
-        spawner = GetComponent<SpawnSystem>();
+        this.ApplyDefaultWheelParameters();
     }
 
 
@@ -68,17 +70,19 @@ public class Car : MonoBehaviour
         float brake = 0;
         float reverse = 0;
         float brakeReverse = input.Brake;
-        if (this.speed > 2)
+        if (this.speed > 2 || !isThrottleEnabled)
             brake = brakeReverse;
         else
             reverse = brakeReverse;
+
+        float throttle = isThrottleEnabled ? input.Throttle : 0;
 
         float finalBrakeTorque = brake * brakeTorque;
         float finalMotorTorque;
         if (reverse > 0)
             finalMotorTorque = -1 * reverse * motorTorque;
         else
-            finalMotorTorque = input.Throttle * motorTorque;
+            finalMotorTorque = throttle * motorTorque;
 
         wheelColliderLeftBack.motorTorque = wheelColliderRightBack.motorTorque = finalMotorTorque;
         wheelColliderLeftBack.brakeTorque = wheelColliderRightBack.brakeTorque = wheelColliderLeftFront.brakeTorque = wheelColliderRightFront.brakeTorque = finalBrakeTorque;
@@ -96,6 +100,7 @@ public class Car : MonoBehaviour
     }
 
 
+    #region WheelSetup
     void UpdateWheelPose(WheelCollider col, Transform wheel, bool isLeft)
     {
         Vector3 pos;
@@ -109,16 +114,22 @@ public class Car : MonoBehaviour
             wheel.rotation = rot;
     }
 
-    public void SetWheelParameters(WheelSetup setup)
+    public void ApplyDefaultWheelParameters()
     {
-        ApplyWheelSetup(wheelColliderLeftFront, setup.front);
-        ApplyWheelSetup(wheelColliderRightFront, setup.front);
-
-        ApplyWheelSetup(wheelColliderLeftBack, setup.rear);
-        ApplyWheelSetup(wheelColliderRightBack, setup.rear);
+        if(defaultWheelSetup != null)
+            ApplyWheelParameters(defaultWheelSetup);
     }
 
-    private void ApplyWheelSetup(WheelCollider wc, WheelSetup.WheelAxleSetup setup)
+    public void ApplyWheelParameters(WheelSetup setup)
+    {
+        SetWheelSetup(wheelColliderLeftFront, setup.front);
+        SetWheelSetup(wheelColliderRightFront, setup.front);
+
+        SetWheelSetup(wheelColliderLeftBack, setup.rear);
+        SetWheelSetup(wheelColliderRightBack, setup.rear);
+    }
+
+    private void SetWheelSetup(WheelCollider wc, WheelSetup.WheelAxleSetup setup)
     {
         wc.mass = setup.mass;
         wc.wheelDampingRate = setup.wheelDampingRate;
@@ -148,4 +159,5 @@ public class Car : MonoBehaviour
         sideways.stiffness = setup.sidewaysStiffness;
         wc.sidewaysFriction = sideways;
     }
+    #endregion
 }

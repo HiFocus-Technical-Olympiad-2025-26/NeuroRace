@@ -10,10 +10,9 @@ public class StartLights : MonoBehaviour
 
     private MaterialPropertyBlock block;
 
-    private void Start()
+    private void Awake()
     {
         block = new MaterialPropertyBlock();
-        TurnAllOff();
     }
 
     void SetSegment(int index, bool on)

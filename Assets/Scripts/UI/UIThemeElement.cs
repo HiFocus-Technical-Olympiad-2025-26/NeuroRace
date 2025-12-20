@@ -56,10 +56,24 @@ public class UIThemeElement : MonoBehaviour
         };
     }
 
+    private Color GetColor2(UITheme theme)
+    {
+        return colorType switch
+        {
+            ThemeColorType.Background => theme.backgroundColor,
+            ThemeColorType.Accent1 => theme.accentColor2,
+            ThemeColorType.Accent2 => theme.accentColor,
+            ThemeColorType.Text => theme.secondaryTextColor,
+            ThemeColorType.TextSecondary => theme.textColor,
+            _ => Color.magenta
+        };
+    }
+
     private void ApplyTheme()
     {
         UITheme theme = UIThemeManager.Instance.CurrentTheme;
         Color chosen = GetColor(theme);
+        Color chosen2 = GetColor2(theme);
 
         //Debug.Log($"Color of {type.ToString()}: {chosen.ToString()}");
 
@@ -80,8 +94,9 @@ public class UIThemeElement : MonoBehaviour
                 {
                     var c = btn.colors;
                     c.normalColor = chosen;
-                    c.highlightedColor = chosen;
-                    c.pressedColor = chosen;
+                    c.highlightedColor = chosen2;
+                    c.pressedColor = chosen2;
+                    c.selectedColor = chosen2;
                     btn.colors = c;
 
                     var btnTxt = GetComponentInChildren<TMP_Text>();

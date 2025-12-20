@@ -2,14 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
-using static UnityEngine.UI.Image;
 
 public class SpawnSystem : MonoBehaviour
 {
-    [SerializeField] private Transform car;
     [SerializeField] private Transform trackPointsParent;
-    [SerializeField] private int StartPoint = 0;
     [SerializeField] private Transform startPointsParent;
 
     private List<Transform> trackPoints = new List<Transform>();
@@ -30,23 +26,28 @@ public class SpawnSystem : MonoBehaviour
         }
     }
 
-    public void SpawnCarOnStart()
+    public void SpawnCarOnSpecificStart(Transform car, int positionIndex)
     {
-        Spawn(StartPoint);
+        if (car == null || positionIndex < 0 || positionIndex >= startPoints.Count)
+            return;
+
+        Rigidbody rb = car.GetComponent<Rigidbody>();
+        if (rb == null)
+            return;
+
+        rb.isKinematic = true;
+        car.SetPositionAndRotation(startPoints[positionIndex].position, startPoints[positionIndex].rotation);
+        rb.isKinematic = false;
+        ResetRigidbody(car);
     }
 
-    public void SpawnCarOnSpecificStart(int positionIndex)
-    {
-        car.position = startPoints[positionIndex].position;
-        car.rotation = startPoints[positionIndex].rotation;
-    }
-
-    public void SpawnCarAtNearestPoint()
+    public void SpawnCarAtNearestPoint(Transform car)
     {
         if (trackPoints.Count == 0)
             return;
 
         Transform nearest = trackPoints[0];
+        int nearestIndex = 0;
         float minDist = Vector3.Distance(car.position, nearest.position);
 
         for (int i = 1; i < trackPoints.Count; i++)
@@ -56,15 +57,14 @@ public class SpawnSystem : MonoBehaviour
             {
                 minDist = dist;
                 nearest = trackPoints[i];
+                nearestIndex = i;
             }
         }
 
-        int index = trackPoints.IndexOf(nearest);
-
-        this.Spawn(index);
+        this.SpawnAtSpecificTrackPoint(car, nearestIndex);
     }
 
-    public void StopCar()
+    public void ResetRigidbody(Transform car)
     {
         if (car == null)
             return;
@@ -74,14 +74,20 @@ public class SpawnSystem : MonoBehaviour
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+
+            rb.Sleep();
+            rb.WakeUp();
         }
     }
 
-    public void Spawn(int indexOfPoint)
+    public void SpawnAtSpecificTrackPoint(Transform car, int indexOfPoint)
     {
-        StopCar();
+        if (car == null)
+            return;
 
-        if (indexOfPoint >= trackPoints.Count || trackPoints.Count == 0)
+        Rigidbody rb = car.GetComponent<Rigidbody>();
+
+        if (indexOfPoint < 0 || indexOfPoint >= trackPoints.Count || trackPoints.Count == 0)
             return;
 
         Transform current = trackPoints[indexOfPoint];
@@ -89,7 +95,14 @@ public class SpawnSystem : MonoBehaviour
 
         Quaternion rotation = Quaternion.LookRotation(next.position - current.position, Vector3.up);
 
-        car.position = current.position;
-        car.rotation = rotation;
+        if (rb != null)
+            rb.isKinematic = true;
+
+        car.SetPositionAndRotation(current.position, rotation);
+
+        if (rb != null)
+            rb.isKinematic = false;
+
+        ResetRigidbody(car);
     }
 }

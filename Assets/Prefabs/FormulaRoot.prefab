@@ -346,9 +346,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310439773823}
-  - component: {fileID: 3179265310439773822}
   - component: {fileID: 3179265310439773821}
   - component: {fileID: 451290148}
+  - component: {fileID: 1878361021620101430}
   m_Layer: 0
   m_Name: FormulaRoot
   m_TagString: Untagged
@@ -375,37 +375,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!114 &3179265310439773822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3179265310439773820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab308fc6cbe4ef24b9d779ee1e655e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelColliderLeftFront: {fileID: 3179265310810615417}
-  wheelColliderRightFront: {fileID: 3179265311213091999}
-  wheelColliderLeftBack: {fileID: 3179265311651118102}
-  wheelColliderRightBack: {fileID: 3179265311490922055}
-  wheelLeftFront: {fileID: 1123239794953416988}
-  wheelRightFront: {fileID: 3179265311575761809}
-  wheelLeftBack: {fileID: 3179265310155097718}
-  wheelRightBack: {fileID: 3179265311519823981}
-  centerOfMass: {fileID: 3179265310653322329}
-  motorTorque: 700
-  brakeTorque: 2500
-  downforceCoefficient: 0.8
-  frontDownforceRatio: 0.4
-  rearDownforceRatio: 0.6
-  frontDownforcePoint: {fileID: 0}
-  rearDownforcePoint: {fileID: 0}
-  lowSpeedSteer: 20
-  highSpeedSteer: 10
-  steerSpeedThreshold: 25
 --- !u!54 &3179265310439773821
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -415,13 +384,13 @@ Rigidbody:
   m_GameObject: {fileID: 3179265310439773820}
   serializedVersion: 2
   m_Mass: 900
-  m_Drag: 0
+  m_Drag: 0.005
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &451290148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +407,40 @@ MonoBehaviour:
   trackPointsParent: {fileID: 0}
   StartPoint: 78
   startPointsParent: {fileID: 0}
+--- !u!114 &1878361021620101430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3179265310439773820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d307fad75d4fb641ae8a51d3df84db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelColliderLeftFront: {fileID: 3179265310810615417}
+  wheelColliderRightFront: {fileID: 3179265311213091999}
+  wheelColliderLeftBack: {fileID: 3179265311651118102}
+  wheelColliderRightBack: {fileID: 3179265311490922055}
+  wheelLeftFront: {fileID: 1123239794953416988}
+  wheelRightFront: {fileID: 3179265311575761809}
+  wheelLeftBack: {fileID: 3179265310155097718}
+  wheelRightBack: {fileID: 3179265311519823981}
+  defaultWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
+  centerOfMass: {fileID: 3179265310653322329}
+  motorTorque: 2000
+  brakeTorque: 4000
+  downforceCoefficient: 0.8
+  frontDownforceRatio: 0.4
+  rearDownforceRatio: 0.6
+  frontDownforcePoint: {fileID: 0}
+  rearDownforcePoint: {fileID: 0}
+  lowSpeedSteer: 20
+  highSpeedSteer: 10
+  steerSpeedThreshold: 25
+  StartPosition: 3
+  speedEvent: {fileID: 11400000, guid: bbd8f8d366fcdfc4fa1b18afafae5597, type: 2}
 --- !u!1 &3179265310653322328
 GameObject:
   m_ObjectHideFlags: 0

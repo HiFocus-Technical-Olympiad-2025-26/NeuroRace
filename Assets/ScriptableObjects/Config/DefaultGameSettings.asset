@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b42c869b51bdb64e9707b79bd59961a, type: 3}
+  m_Name: DefaultGameSettings
+  m_EditorClassIdentifier: 
+  playerCarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
+  AICarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
+  playerWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
+  AIWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
+  StartPosition: 3
+  NumOfAIs: 3
