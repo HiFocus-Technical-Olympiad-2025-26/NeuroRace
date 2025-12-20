@@ -116,6 +116,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Skin"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb0d2350-08f0-46fe-a20a-4494a4fb58ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -492,6 +501,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""CameraRotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37e3c000-fafc-4e80-b461-1f0934e28621"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37cc7454-0529-4e8e-9df7-6530bd0aea1f"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Skin"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -843,6 +874,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_GamePlay_Respawn = m_GamePlay.FindAction("Respawn", throwIfNotFound: true);
         m_GamePlay_SpawnStart = m_GamePlay.FindAction("SpawnStart", throwIfNotFound: true);
         m_GamePlay_Quit = m_GamePlay.FindAction("Quit", throwIfNotFound: true);
+        m_GamePlay_Skin = m_GamePlay.FindAction("Skin", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Confirm = m_Menu.FindAction("Confirm", throwIfNotFound: true);
@@ -924,6 +956,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_GamePlay_Respawn;
     private readonly InputAction m_GamePlay_SpawnStart;
     private readonly InputAction m_GamePlay_Quit;
+    private readonly InputAction m_GamePlay_Skin;
     public struct GamePlayActions
     {
         private @InputActions m_Wrapper;
@@ -938,6 +971,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Respawn => m_Wrapper.m_GamePlay_Respawn;
         public InputAction @SpawnStart => m_Wrapper.m_GamePlay_SpawnStart;
         public InputAction @Quit => m_Wrapper.m_GamePlay_Quit;
+        public InputAction @Skin => m_Wrapper.m_GamePlay_Skin;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -977,6 +1011,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Quit.started += instance.OnQuit;
             @Quit.performed += instance.OnQuit;
             @Quit.canceled += instance.OnQuit;
+            @Skin.started += instance.OnSkin;
+            @Skin.performed += instance.OnSkin;
+            @Skin.canceled += instance.OnSkin;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -1011,6 +1048,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Quit.started -= instance.OnQuit;
             @Quit.performed -= instance.OnQuit;
             @Quit.canceled -= instance.OnQuit;
+            @Skin.started -= instance.OnSkin;
+            @Skin.performed -= instance.OnSkin;
+            @Skin.canceled -= instance.OnSkin;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -1142,6 +1182,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnRespawn(InputAction.CallbackContext context);
         void OnSpawnStart(InputAction.CallbackContext context);
         void OnQuit(InputAction.CallbackContext context);
+        void OnSkin(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

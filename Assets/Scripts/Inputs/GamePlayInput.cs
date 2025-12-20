@@ -15,6 +15,8 @@ public class GamePlayInput
 	public float Throttle { get; private set; } = 0;
 	public float Brake { get; private set; } = 0;
 
+	public bool Skin { get; private set; } = false;
+
 	public bool Spawn { get; private set; } = false;
 	public bool SpawnOnStart { get; private set; } = false;
 
@@ -44,10 +46,13 @@ public class GamePlayInput
 		g.CameraRotateMouse.performed += ctx => CamRotationMouse = ctx.ReadValue<Vector2>();
 		g.CameraRotateMouse.canceled += _ => CamRotationMouse = Vector2.zero;
 
-		g.Quit.performed += _ => Quit = true;
-		g.Quit.canceled += _ => Quit = false;
+        g.Quit.performed += _ => Quit = true;
+        g.Quit.canceled += _ => Quit = false;
 
-		g.NextCamera.performed += ctx =>
+        g.Skin.performed += _ => Skin = true;
+        g.Skin.canceled += _ => Skin = false;
+
+        g.NextCamera.performed += ctx =>
 		{
 			// if input comes from Keyboard, check shift
 			if (ctx.control.device is Keyboard)
@@ -106,6 +111,13 @@ public class GamePlayInput
     {
         bool value = PrevCam;
         PrevCam = false;
+        return value;
+    }
+
+    public bool ConsumeSkin()
+    {
+        bool value = Skin;
+        Skin = false;
         return value;
     }
 }
