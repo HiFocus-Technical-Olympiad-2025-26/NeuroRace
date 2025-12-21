@@ -3552,7 +3552,7 @@ MonoBehaviour:
   - {fileID: 1765076419}
   - {fileID: 666499129}
   - {fileID: 1504667435}
-  currentCamIndex: 5
+  currentCamIndex: 0
 --- !u!4 &864238364
 Transform:
   m_ObjectHideFlags: 0
@@ -6178,7 +6178,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &1504667435
 Camera:
   m_ObjectHideFlags: 0
@@ -10941,7 +10941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3179265310164960836, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3179265310257274303, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_Layer
@@ -12774,7 +12774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3925293745142533565
 Transform:
   m_ObjectHideFlags: 0
