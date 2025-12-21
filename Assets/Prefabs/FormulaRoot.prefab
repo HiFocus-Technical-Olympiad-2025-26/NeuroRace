@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1123239794953416988}
   - component: {fileID: 4051365208462524089}
   - component: {fileID: 2296167825571056243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelLeftFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8833302816018975845}
   - component: {fileID: 6040197288185178858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OrbitCamDistTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 7385455199151596904}
   - component: {fileID: 4478064002388061417}
   - component: {fileID: 1822782640615850067}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2183852815477063539}
   - component: {fileID: 2183852815477063538}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Skins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2183852815944143817}
   - component: {fileID: 2183852815944143816}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2183852816079865309}
   - component: {fileID: 2183852816079865308}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -354,7 +354,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2183852816213289470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightnings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7981591212495131376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RearPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 3003279711083139315}
   - component: {fileID: 2162309915676286806}
   - component: {fileID: 4172275132470946716}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Formula-RedYellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 2908686505712462162}
   - component: {fileID: 2302009433241790199}
   - component: {fileID: 4041582830863077949}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Formula-RedBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 3179265310155097718}
   - component: {fileID: 3179265310155097712}
   - component: {fileID: 3179265310155097719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelLeftBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,7 +678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310164960837}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -710,7 +710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310257274296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -744,7 +744,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310260611893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraTargets
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,7 +780,7 @@ GameObject:
   - component: {fileID: 3179265310439773823}
   - component: {fileID: 3179265310439773821}
   - component: {fileID: 1878361021620101430}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FormulaRoot
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310653322329}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -897,7 +897,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265310810615416}
   - component: {fileID: 3179265310810615417}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderLeftFront
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -957,7 +957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3179265310907608818}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Transformers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +992,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265310909746872}
   - component: {fileID: 3179265310909746873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraFollow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1031,7 +1031,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311213091998}
   - component: {fileID: 3179265311213091999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderRightFront
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1092,7 +1092,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311263835459}
   - component: {fileID: 3179265311263835468}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311391802279}
   - component: {fileID: 3179265311391802272}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BackCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311490922054}
   - component: {fileID: 3179265311490922055}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderRightBack
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 3179265311519823981}
   - component: {fileID: 3179265311519823983}
   - component: {fileID: 3179265311519823982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelRightBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 3179265311575761809}
   - component: {fileID: 3179265311575761811}
   - component: {fileID: 3179265311575761810}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelRightFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1405,7 +1405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311605772841}
   - component: {fileID: 3179265311605772842}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraDriver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1444,7 +1444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3179265311651118101}
   - component: {fileID: 3179265311651118102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderLeftBack
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1504,7 +1504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5003494946227525309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FrontPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1536,7 +1536,7 @@ GameObject:
   - component: {fileID: 7954261329693355039}
   - component: {fileID: 3263739070500974187}
   - component: {fileID: 4312375650292040173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 7626783947376689522}
   - component: {fileID: 1161961805992226741}
   - component: {fileID: 2970137888018383443}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 6749733434231124138}
   - component: {fileID: 8033564247299586901}
   - component: {fileID: 980403771557615998}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1779,7 +1779,7 @@ GameObject:
   - component: {fileID: 8327557028954370216}
   - component: {fileID: 9151296838643987481}
   - component: {fileID: 644336989567969721}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Formula-Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1864,7 +1864,7 @@ GameObject:
   - component: {fileID: 2414490115165100497}
   - component: {fileID: 7216887237354720222}
   - component: {fileID: 2670120576933844593}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1945,7 +1945,7 @@ GameObject:
   - component: {fileID: 4350301872995948168}
   - component: {fileID: 1951641126758603050}
   - component: {fileID: 9185932670439079800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lightning-frontSpoiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3183146370021602303}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DownforcePoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}

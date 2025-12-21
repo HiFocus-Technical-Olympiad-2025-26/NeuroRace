@@ -7,10 +7,11 @@ public class AIController : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private float steeringDeadZone = 0.1f;
     [SerializeField] private LayerMask mask;
+    [SerializeField] private LayerMask collisions;
     [SerializeField] private int minimalSpeed = 10;
     [SerializeField] private float brakingThreshold = 15;
     [SerializeField] private int turnClearDistance = 20;
-    [SerializeField] private int collision = 5;
+    [SerializeField] private int maxSpeed = 25;
 
     [Header("Refferences")]
     [SerializeField] private Transform lrTransform;
@@ -22,15 +23,31 @@ public class AIController : MonoBehaviour
     private AICheckpoint current_inst;
     private bool follow_direction = false;
     private bool ignoreRules = false;
+    [SerializeField] private float laneRatio = 1;
+
+    private float RussianElimination(float target, float replacement, float threshold) {
+        if (target <= threshold) {
+            target = replacement; // Target found dead under a window
+        }
+
+        return target;
+    }
 
     private void Start()
     {
+        laneRatio = Random.Range(0.5f, 1.5f);
         car = GetComponent<AICar>();
     }
 
     void FixedUpdate()
     {
-        carInput.Throttle = 1;
+        if (car.speed < maxSpeed)
+        {
+            carInput.Throttle = 1;
+        }
+        else {
+            carInput.Throttle = 0;
+        }
 
         var frontRay = new Ray(transform.position, transform.forward);
         RaycastHit frHitInfo;
@@ -44,7 +61,11 @@ public class AIController : MonoBehaviour
         RaycastHit rrHitInfo;
         Physics.Raycast(rightRay, out rrHitInfo, Mathf.Infinity, mask.value);
 
-        carInput.Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance - rrHitInfo.distance, -1, 1);
+        var collisionRay = new Ray(transform.position, transform.forward);
+        RaycastHit crHitInfo;
+        Physics.Raycast(collisionRay, out crHitInfo, Mathf.Infinity, mask.value);
+
+        carInput.Steer = lrHitInfo.distance / rrHitInfo.distance < steeringDeadZone ? 0 : -Mathf.Clamp(lrHitInfo.distance * laneRatio - rrHitInfo.distance, -1, 1);
 
         if (frHitInfo.distance > turnClearDistance && follow_direction) 
         {
@@ -62,7 +83,7 @@ public class AIController : MonoBehaviour
             return;
         }
 
-        float braking_ratio = frHitInfo.distance / car.speed;
+        float braking_ratio = Mathf.Min(frHitInfo.distance / car.speed, RussianElimination(crHitInfo.distance, 10000, 0) / car.speed);
 
         if (braking_ratio < brakingThreshold && car.speed > minimalSpeed)
         {
@@ -74,7 +95,7 @@ public class AIController : MonoBehaviour
             carInput.Brake = 0;
         }
 
-        if (frHitInfo.distance < 5) {
+        if (car.speed < minimalSpeed) {
             carInput.Spawn = true;
         }
     }
@@ -91,6 +112,7 @@ public class AIController : MonoBehaviour
             current_inst = other.GetComponent<AICheckpoint>();
             follow_direction = !current_inst.removeCheckpointEffects;
             ignoreRules = current_inst.ignoreRules;
+            laneRatio = Random.Range(0.5f, 1.5f);
         }
     }
 }
