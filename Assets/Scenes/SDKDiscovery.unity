@@ -1011,6 +1011,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7996388320679422501, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
+      propertyPath: maxSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422503, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_Name
       value: AI (2)
@@ -3493,6 +3497,10 @@ PrefabInstance:
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996388320679422501, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
+      propertyPath: maxSpeed
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422503, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_Name
@@ -12354,7 +12362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 18
+      value: -2.1
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12362,7 +12370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20
+      value: 17.7
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12391,6 +12399,14 @@ PrefabInstance:
     - target: {fileID: 7996388320679422500, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996388320679422501, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
+      propertyPath: maxSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7996388320679422501, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
+      propertyPath: laneRatio
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7996388320679422503, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
       propertyPath: m_Name
