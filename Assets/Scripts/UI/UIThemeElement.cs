@@ -13,7 +13,8 @@ public class UIThemeElement : MonoBehaviour
         Button,
         Toggle,
         Light,
-        Renderer
+        Renderer,
+        ParticleSystem
     }
 
     public enum ThemeColorType
@@ -130,6 +131,17 @@ public class UIThemeElement : MonoBehaviour
                 {
                     if (rend.material.HasProperty("_Color"))
                         rend.material.color = chosen;
+                }
+                break;
+
+            case ElementType.ParticleSystem:
+                if (TryGetComponent<ParticleSystem>(out var ps))
+                {
+                    var main = ps.main;
+                    main.startColor = new ParticleSystem.MinMaxGradient(chosen);
+
+                    ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                    ps.Play();
                 }
                 break;
         }

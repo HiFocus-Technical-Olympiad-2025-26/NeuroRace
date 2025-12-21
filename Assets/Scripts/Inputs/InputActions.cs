@@ -601,6 +601,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""NextTheme"",
+                    ""type"": ""Button"",
+                    ""id"": ""dd7c084c-e3bf-4a53-8532-a22b869910b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -856,6 +865,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""RightClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4009f14a-2936-4a88-bde3-88320a9f1cac"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextTheme"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -885,6 +905,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Menu_ScrollWheel = m_Menu.FindAction("ScrollWheel", throwIfNotFound: true);
         m_Menu_MiddleClick = m_Menu.FindAction("MiddleClick", throwIfNotFound: true);
         m_Menu_RightClick = m_Menu.FindAction("RightClick", throwIfNotFound: true);
+        m_Menu_NextTheme = m_Menu.FindAction("NextTheme", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1080,6 +1101,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_ScrollWheel;
     private readonly InputAction m_Menu_MiddleClick;
     private readonly InputAction m_Menu_RightClick;
+    private readonly InputAction m_Menu_NextTheme;
     public struct MenuActions
     {
         private @InputActions m_Wrapper;
@@ -1092,6 +1114,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @ScrollWheel => m_Wrapper.m_Menu_ScrollWheel;
         public InputAction @MiddleClick => m_Wrapper.m_Menu_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_Menu_RightClick;
+        public InputAction @NextTheme => m_Wrapper.m_Menu_NextTheme;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1125,6 +1148,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @RightClick.started += instance.OnRightClick;
             @RightClick.performed += instance.OnRightClick;
             @RightClick.canceled += instance.OnRightClick;
+            @NextTheme.started += instance.OnNextTheme;
+            @NextTheme.performed += instance.OnNextTheme;
+            @NextTheme.canceled += instance.OnNextTheme;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -1153,6 +1179,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @RightClick.started -= instance.OnRightClick;
             @RightClick.performed -= instance.OnRightClick;
             @RightClick.canceled -= instance.OnRightClick;
+            @NextTheme.started -= instance.OnNextTheme;
+            @NextTheme.performed -= instance.OnNextTheme;
+            @NextTheme.canceled -= instance.OnNextTheme;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -1194,5 +1223,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnScrollWheel(InputAction.CallbackContext context);
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
+        void OnNextTheme(InputAction.CallbackContext context);
     }
 }

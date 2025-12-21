@@ -7,7 +7,9 @@ public class MenuInput
 {
 	private InputActions.MenuActions m;
 
-	public bool Confirm { get; private set; } = false;
+    public bool NextTheme { get; private set; } = false;
+
+    public bool Confirm { get; private set; } = false;
 	public bool Back { get; private set; } = false;
 
     public Vector2 RawDirection { get; private set; }
@@ -27,7 +29,10 @@ public class MenuInput
 	{
 		this.m = m;
 
-		m.Direction.performed += ctx =>
+        m.NextTheme.performed += _ => NextTheme = true;
+        m.NextTheme.canceled += _ => NextTheme = false;
+
+        m.Direction.performed += ctx =>
         {
             RawDirection = ctx.ReadValue<Vector2>();
             Direction = NormalizeDirection(RawDirection);
@@ -71,5 +76,12 @@ public class MenuInput
             return new Vector2(Mathf.Sign(v.x), 0);
 
         return new Vector2(0, Mathf.Sign(v.y));
+    }
+
+    public bool ConsumeNextTheme()
+    {
+        bool value = NextTheme;
+        NextTheme = false;
+        return value;
     }
 }
