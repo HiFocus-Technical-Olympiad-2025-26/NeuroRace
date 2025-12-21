@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 666499127}
   - component: {fileID: 666499129}
   - component: {fileID: 666499128}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3566064743415301276}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LeftRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3566064743932805259}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RightRay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,7 +154,7 @@ GameObject:
   - component: {fileID: 5580356447018290503}
   - component: {fileID: 8853710773635580642}
   - component: {fileID: 6717756852161607208}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelLeftFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7996388320337371619}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7996388320412908062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 7996388320438762029}
   - component: {fileID: 7996388320438762027}
   - component: {fileID: 7996388320438762028}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelLeftBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 7996388320679422522}
   - component: {fileID: 7996388320679422502}
   - component: {fileID: 7996388320679422501}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AI
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -483,6 +483,9 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
+  collisions:
+    serializedVersion: 2
+    m_Bits: 64
   minimalSpeed: 10
   brakingThreshold: 1.5
   turnClearDistance: 50
@@ -498,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7996388320744526505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Transformers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996388320857248291}
   - component: {fileID: 7996388320857248290}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderLeftFront
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -593,7 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7996388321001957378}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CenterOfMass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -624,7 +627,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996388321478293784}
   - component: {fileID: 7996388321478293783}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Colliders
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -669,7 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996388321527988421}
   - component: {fileID: 7996388321527988420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderRightFront
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -730,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996388321632600142}
   - component: {fileID: 7996388321632600141}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderLeftBack
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -792,7 +795,7 @@ GameObject:
   - component: {fileID: 7996388321689345994}
   - component: {fileID: 7996388321689345992}
   - component: {fileID: 7996388321689345993}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelRightFront
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -876,7 +879,7 @@ GameObject:
   - component: {fileID: 7996388321759437878}
   - component: {fileID: 7996388321759437876}
   - component: {fileID: 7996388321759437877}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelRightBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +962,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7996388321774447133}
   - component: {fileID: 7996388321774447132}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WheelColliderRightBack
   m_TagString: AI
   m_Icon: {fileID: 0}
@@ -1021,7 +1024,7 @@ GameObject:
   - component: {fileID: 8427576705272069345}
   - component: {fileID: 4853507975816819524}
   - component: {fileID: 7259776761184307086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Formula
   m_TagString: Untagged
   m_Icon: {fileID: 0}
