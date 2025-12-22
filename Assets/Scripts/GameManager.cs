@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private StartLights startLights;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject aiPrefab;
+    [SerializeField] private NeuroObstacleController neuroObstacleController;
     [SerializeField] private float LightSequenceInterval = 1f;
     private List<GameObject> AIInstances = new List<GameObject>();
 
@@ -67,6 +68,11 @@ public class GameManager : MonoBehaviour
             spawnSystem.SpawnCarOnSpecificStart(ai.transform, nextAIStartPosition);
             nextAIStartPosition++;
         }
+
+        if(neuroObstacleController != null)
+            neuroObstacleController.IgnoreAICollisions();
+        else
+            Debug.LogError("neuroObstacleController is null", neuroObstacleController);
 
         //startLights.TurnOnUpTo(3);
         StartCoroutine(StartLightSequence());

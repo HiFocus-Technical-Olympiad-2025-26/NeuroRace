@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -647,16 +647,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1524692902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_PointAction: {fileID: -8662170461017608193, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_MoveAction: {fileID: 0}
+  m_SubmitAction: {fileID: 3674785581623488233, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_CancelAction: {fileID: 4276408463835203809, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_LeftClickAction: {fileID: 3526791938145645616, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_MiddleClickAction: {fileID: -8764804802378720936, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_RightClickAction: {fileID: -7084249412339996085, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_ScrollWheelAction: {fileID: -4344140508491582313, guid: e51aecaeb6a8f8b419fc7cc05f7deb2d, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!114 &1524692904
 MonoBehaviour:
   m_ObjectHideFlags: 0
