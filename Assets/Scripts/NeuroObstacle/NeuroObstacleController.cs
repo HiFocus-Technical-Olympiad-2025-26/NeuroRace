@@ -45,6 +45,15 @@ public class NeuroObstacleController : MonoBehaviour
         solidCollider.enabled = false;
     }
 
+    public void ResetObstacle()
+    {
+        isCleared = false;
+        isPenaltyRunning = false;
+
+        visual.SetActive(true);
+        solidCollider.enabled = true;
+    }
+
     public void PlayerHit()
     {
         if (isCleared || isPenaltyRunning) return;
@@ -77,6 +86,6 @@ public class NeuroObstacleController : MonoBehaviour
             }
         }
 
-        Debug.Log($"detected {aiObjects.Length} AI cars");
+        //Debug.Log($"detected {aiObjects.Length} AI colliders");
     }
 }

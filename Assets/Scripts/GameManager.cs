@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        if (player == null || aiPrefab == null || gameSettings == null || 
+        if (player == null || aiPrefab == null || gameSettings == null ||
             gameSettings.StartPosition < 0 || gameSettings.NumOfAIs < 0 || gameSettings.StartPosition > gameSettings.NumOfAIs)
             return;
 
@@ -70,7 +71,10 @@ public class GameManager : MonoBehaviour
         }
 
         if(neuroObstacleController != null)
+        {
+            neuroObstacleController.ResetObstacle();
             neuroObstacleController.IgnoreAICollisions();
+        }
         else
             Debug.LogError("neuroObstacleController is null", neuroObstacleController);
 
