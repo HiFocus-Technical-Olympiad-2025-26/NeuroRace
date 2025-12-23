@@ -20,8 +20,10 @@ public class UserCar : Car
         //spawn
         if (inputRaw.Spawn)
             spawner.SpawnCarAtNearestPoint(this.transform);
-        /*if (inputRaw.SpawnOnStart)
-            spawner.SpawnCarOnSpecificStart(this.transform, 0);*/
+
+        //skin
+        if (inputRaw.ConsumeSkin() && skinSwitcher != null)
+            skinSwitcher.NextSkin();
 
 
         CarInput input = new CarInput

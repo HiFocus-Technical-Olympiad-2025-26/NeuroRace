@@ -44,9 +44,12 @@ public class Car : MonoBehaviour
     protected Rigidbody rb;
 
     public SpawnSystem spawner;
+    protected SkinSwitcher skinSwitcher;
 
     protected virtual void Start()
     {
+        skinSwitcher = GetComponentInChildren<SkinSwitcher>();
+
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass.localPosition;
 

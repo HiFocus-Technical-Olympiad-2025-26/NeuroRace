@@ -2812,11 +2812,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654402464}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!20 &666499129 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 666499129, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
-  m_PrefabInstance: {fileID: 3566064744131419050}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &691424677
 GameObject:
   m_ObjectHideFlags: 0
@@ -3791,7 +3786,7 @@ MonoBehaviour:
   - {fileID: 922949440}
   - {fileID: 521325355}
   - {fileID: 1765076419}
-  - {fileID: 666499129}
+  - {fileID: 3566064743465001875}
   - {fileID: 1504667435}
   currentCamIndex: 0
 --- !u!4 &864238364
@@ -12644,6 +12639,11 @@ Transform:
   m_Father: {fileID: 569492656}
   m_RootOrder: 93
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!20 &3566064743465001875 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 666499129, guid: c69ede68f3f745742a9ac7840069ae69, type: 3}
+  m_PrefabInstance: {fileID: 3566064744131419050}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3566064744131419050
 PrefabInstance:
   m_ObjectHideFlags: 0

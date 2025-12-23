@@ -24,14 +24,7 @@ public class SkinSwitcher : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        var input = InputManager.Instance.GamePlay;
-        if (input.ConsumeSkin())
-            SetSkinIndex(currentSkinIndex + 1);
-    }
-
-    public void SetSkinIndex(int newIndex)
+    private void SetSkinIndex(int newIndex)
     {
         if (skins.Count == 0)
         {
@@ -42,5 +35,23 @@ public class SkinSwitcher : MonoBehaviour
         skins[currentSkinIndex].SetActive(false);
         currentSkinIndex = (newIndex + skins.Count) % skins.Count;
         skins[currentSkinIndex].SetActive(true);
+    }
+
+    public void NextSkin()
+    {
+        SetSkinIndex(currentSkinIndex + 1);
+    }
+
+    public void PreviousSkin()
+    {
+        SetSkinIndex(currentSkinIndex - 1);
+    }
+
+    public void SetRandomSkin()
+    {
+        if (skins.Count == 0)
+            return;
+
+        SetSkinIndex(Random.Range(0, skins.Count * 5) % skins.Count);
     }
 }
