@@ -8530,6 +8530,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NeuroObstacleRoot
       objectReference: {fileID: 0}
+    - target: {fileID: 8178666586668429746, guid: 7df15e679ae88d14f9c46f8379884a79, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7df15e679ae88d14f9c46f8379884a79, type: 3}
 --- !u!1001 &8189372194481706874

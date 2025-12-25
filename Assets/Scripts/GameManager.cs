@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public enum GameState
+    {
+        Idle,
+        Countdown,
+        Running
+    }
+
+    public GameState CurrentState { get; private set; } = GameState.Idle;
+
     [SerializeField] private GameSettingsSO gameSettings;
     [SerializeField] private SpawnSystem spawnSystem;
     [SerializeField] private StartLights startLights;
@@ -13,6 +22,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] private NeuroObstacleController neuroObstacleController;
     [SerializeField] private float LightSequenceInterval = 1f;
     private List<GameObject> AIInstances = new List<GameObject>();
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -31,7 +52,9 @@ public class GameManager : MonoBehaviour
             gameSettings.StartPosition < 0 || gameSettings.NumOfAIs < 0 || gameSettings.StartPosition > gameSettings.NumOfAIs)
             return;
 
-        if(AIInstances.Count > 0)
+        CurrentState = GameState.Idle;
+
+        if (AIInstances.Count > 0)
         {
             foreach (var ai in AIInstances)
             {
@@ -83,6 +106,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartLightSequence()
     {
+        CurrentState = GameState.Countdown;
+
         for (int i = 1; i <= startLights.segments.Length; i++)
         {
             startLights.TurnOnUpTo(i);
@@ -92,6 +117,8 @@ public class GameManager : MonoBehaviour
         startLights.TurnAllOff();
 
         EnableThrottle(true);
+
+        CurrentState = GameState.Running;
     }
 
     void EnableThrottle(bool enable)

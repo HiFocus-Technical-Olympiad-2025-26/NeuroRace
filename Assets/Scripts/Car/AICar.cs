@@ -21,4 +21,9 @@ public class AICar : Car
     {
         this.ApplyPhysics(controller.carInput);
     }
+
+    public SpawnSystem getSpawner()
+    {
+        return spawner;
+    }
 }
