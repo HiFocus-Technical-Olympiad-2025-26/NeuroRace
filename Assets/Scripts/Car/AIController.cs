@@ -8,7 +8,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float steeringDeadZone = 0.1f;
     [SerializeField] private LayerMask mask;
     [SerializeField] private LayerMask collisions;
-    [SerializeField] private int minimalSpeed = 10;
+    [SerializeField] private int minSpeed = 10;
     [SerializeField] private float brakingThreshold = 15;
     [SerializeField] private int turnClearDistance = 20;
     [SerializeField] private int maxSpeed = 25;
@@ -85,7 +85,7 @@ public class AIController : MonoBehaviour
 
         float braking_ratio = Mathf.Min(frHitInfo.distance / car.speed, RussianElimination(crHitInfo.distance, 10000, 0) / car.speed);
 
-        if (braking_ratio < brakingThreshold && car.speed > minimalSpeed)
+        if (braking_ratio < brakingThreshold && car.speed > minSpeed)
         {
             //Debug.Log("Breaking, value: " + frHitInfo.distance / car.speed);
             carInput.Brake = 1 / braking_ratio;
@@ -93,10 +93,6 @@ public class AIController : MonoBehaviour
         else 
         {
             carInput.Brake = 0;
-        }
-
-        if (car.speed < minimalSpeed) {
-            carInput.Spawn = true;
         }
     }
 
@@ -114,5 +110,10 @@ public class AIController : MonoBehaviour
             ignoreRules = current_inst.ignoreRules;
             laneRatio = Random.Range(0.5f, 1.5f);
         }
+    }
+
+    public int GetMinSpeed()
+    {
+        return minSpeed;
     }
 }

@@ -9,15 +9,23 @@ public class AIStuckRespawn : MonoBehaviour
     [SerializeField] private float minSpeed = 1.0f; // m/s
     [SerializeField] private float stuckTime = 3.0f; // seconds
     [SerializeField] private float upsideDownDot = 0.4f; // how much upside-down is allowed
+    //[SerializeField] private bool PrintDot = false;
 
     private Rigidbody rb;
     private AICar car;
+    private AIController carController;
     private float stuckTimer = 0f;
 
-    private void Awake()
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
         car = GetComponent<AICar>();
+        carController = GetComponent<AIController>();
+
+        if (carController != null)
+        {
+            minSpeed = carController.GetMinSpeed();
+        }
     }
 
     private void FixedUpdate()
@@ -31,8 +39,14 @@ public class AIStuckRespawn : MonoBehaviour
             return;
         }
 
-        bool isUpsideDown = Vector3.Dot(transform.up, Vector3.up) < upsideDownDot;
+        var dot = Vector3.Dot(transform.up.normalized, Vector3.up);
+        /*if(PrintDot)
+            Debug.Log("Dot: " + dot);*/
+        bool isUpsideDown = dot < upsideDownDot;
         bool isSlow = rb.velocity.magnitude < minSpeed;
+
+        /*if(isUpsideDown)
+            Debug.Log("Car is upside down.");*/
 
         if (isUpsideDown || isSlow)
         {
