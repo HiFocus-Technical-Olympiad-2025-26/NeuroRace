@@ -6,7 +6,7 @@ using UnityEngine;
 public class AIStuckRespawn : MonoBehaviour
 {
     [Header("Stuck Detection")]
-    [SerializeField] private float minSpeed = 1.0f; // m/s
+    /*[SerializeField]*/ private float minSpeed = 1.0f; // m/s
     [SerializeField] private float stuckTime = 3.0f; // seconds
     [SerializeField] private float upsideDownDot = 0.4f; // how much upside-down is allowed
     //[SerializeField] private bool PrintDot = false;
