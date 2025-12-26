@@ -653,6 +653,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstButton: {fileID: 155906398}
+  neuroManagerRealPrefab: {fileID: 4902287170752512060, guid: a7f780acd6e45ea448342fe4c1607795, type: 3}
+  neuroManagerSimulatedPrefab: {fileID: 47347585581670187, guid: 23b098744d5f75740a89a97fc330b1ed, type: 3}
 --- !u!1 &626445175
 GameObject:
   m_ObjectHideFlags: 0

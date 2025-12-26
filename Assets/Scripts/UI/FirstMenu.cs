@@ -8,7 +8,12 @@ using NextMind;
 
 public class FirstMenu : MonoBehaviour
 {
+    [Header("UI")]
     public GameObject firstButton;
+
+    [Header("NeuroManager Prefabs")]
+    [SerializeField] private GameObject neuroManagerRealPrefab;
+    [SerializeField] private GameObject neuroManagerSimulatedPrefab;
 
     private bool hasFocusedBtn = false;
 
@@ -36,17 +41,31 @@ public class FirstMenu : MonoBehaviour
 
     public void Calibrate()
     {
-        NeuroManager.Instance.SimulateDevice = false;
+        //Debug.Log("Btn Calibrate clicked");
 
-        Debug.Log("Btn Calibrate clicked");
+        SpawnNeuroManager(neuroManagerRealPrefab);
+
         SceneManager.LoadScene("Calibration");
     }
 
     public void ContinueWithoutNextmind()
     {
-        NeuroManager.Instance.SimulateDevice = true;
+        //Debug.Log("Btn ContinueWithoutNextmind clicked");
 
-        Debug.Log("Btn ContinueWithoutNextmind clicked");
+        SpawnNeuroManager(neuroManagerSimulatedPrefab);
+
         SceneManager.LoadScene("SDKDiscovery");
+    }
+
+    private void SpawnNeuroManager(GameObject prefab)
+    {
+        if (FindObjectOfType<NeuroManager>() != null)
+        {
+            Debug.LogWarning("NeuroManager already exists, skipping spawn");
+            return;
+        }
+
+        GameObject nm = Instantiate(prefab);
+        DontDestroyOnLoad(nm);
     }
 }
