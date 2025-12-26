@@ -23,6 +23,8 @@ namespace NextMind.Examples
         public void ExitToHub()
         {
             var hubManager = HubManager.Instance;
+
+            Debug.Log("Can switch: " + hubManager != null);
             if (hubManager != null)
             {
                 hubManager.BackToHubScene();

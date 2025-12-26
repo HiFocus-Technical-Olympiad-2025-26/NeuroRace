@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using NextMind;
 
 public class FirstMenu : MonoBehaviour
 {
     public GameObject firstButton;
+
     private bool hasFocusedBtn = false;
 
 
@@ -34,12 +36,16 @@ public class FirstMenu : MonoBehaviour
 
     public void Calibrate()
     {
+        NeuroManager.Instance.SimulateDevice = false;
+
         Debug.Log("Btn Calibrate clicked");
         SceneManager.LoadScene("Calibration");
     }
 
     public void ContinueWithoutNextmind()
     {
+        NeuroManager.Instance.SimulateDevice = true;
+
         Debug.Log("Btn ContinueWithoutNextmind clicked");
         SceneManager.LoadScene("SDKDiscovery");
     }

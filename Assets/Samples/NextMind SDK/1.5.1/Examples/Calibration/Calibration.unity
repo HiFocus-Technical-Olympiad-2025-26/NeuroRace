@@ -14873,10 +14873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hubPanel: {fileID: 905333671}
-  tweakableLights:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  tweakableLights: []
 --- !u!4 &1667429060
 Transform:
   m_ObjectHideFlags: 0

@@ -82,7 +82,10 @@ namespace NextMind.Examples
 
             loadedScene = string.Empty;
 
-            hubPanel.SetActive(true);
+            //hubPanel.SetActive(true);
+
+
+            SceneManager.LoadScene("SDKDiscovery");
         }
 
         /// <summary>
