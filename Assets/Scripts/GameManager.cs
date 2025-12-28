@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         spawnSystem.SpawnCarOnSpecificStart(player.transform, gameSettings.StartPosition);
         PlayerCar.isThrottleEnabled = false;
         PlayerCar.spawner = spawnSystem;
+        PlayerCar.SetSkin(gameSettings.skinIndex);
 
         int nextAIStartPosition = 0;
         for (int i = 0; i < gameSettings.NumOfAIs; i++)
@@ -94,8 +95,14 @@ public class GameManager : MonoBehaviour
 
         if(neuroObstacleController != null)
         {
-            neuroObstacleController.ResetObstacle();
-            neuroObstacleController.IgnoreAICollisions();
+            if(gameSettings.ShowNeuroObstacle)
+            {
+                neuroObstacleController.gameObject.SetActive(true);
+                neuroObstacleController.ResetObstacle();
+                neuroObstacleController.IgnoreAICollisions();
+            }
+            else
+                neuroObstacleController.gameObject.SetActive(false);
         }
         else
             Debug.LogError("neuroObstacleController is null", neuroObstacleController);

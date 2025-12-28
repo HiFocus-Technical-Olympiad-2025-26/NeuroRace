@@ -56,6 +56,12 @@ public class Car : MonoBehaviour
         this.ApplyDefaultWheelParameters();
     }
 
+    public void SetSkin(int index)
+    {
+        if (skinSwitcher != null)
+            skinSwitcher.SetSkinIndex(index);
+    }
+
 
     protected void ApplyPhysics(CarInput input)
     {

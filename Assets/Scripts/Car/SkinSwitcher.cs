@@ -24,7 +24,12 @@ public class SkinSwitcher : MonoBehaviour
         }
     }
 
-    private void SetSkinIndex(int newIndex)
+    public int GetSkinIndex()
+    {
+        return currentSkinIndex;
+    }
+
+    public void SetSkinIndex(int newIndex)
     {
         if (skins.Count == 0)
         {
