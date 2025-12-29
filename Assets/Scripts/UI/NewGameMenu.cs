@@ -16,7 +16,7 @@ public class NewGameMenu : MonoBehaviour
 {
     [Header("UI Navigation")]
     public GameObject firstButton;
-    [SerializeField] string GameSceneName = "SDKDiscovery";
+    [SerializeField] string GameSceneName = "GameScene";
 
     [Header("UI Inputs")]
     [SerializeField] private TMP_Dropdown CarSettings;

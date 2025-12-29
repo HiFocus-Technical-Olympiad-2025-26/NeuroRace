@@ -6287,7 +6287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstButton: {fileID: 0}
-  GameSceneName: SDKDiscovery
+  GameSceneName: GameScene
   CarSettings: {fileID: 1155849645}
   StartPositionDropdown: {fileID: 1530584300}
   StartPositionSlider: {fileID: 976014111}

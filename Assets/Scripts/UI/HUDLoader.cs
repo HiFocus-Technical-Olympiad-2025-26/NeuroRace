@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class HUDLoader : MonoBehaviour
 {
     [SerializeField] private string hudSceneName = "HUD";
-    [SerializeField] private string gameSceneName = "SDKDiscovery";
+    [SerializeField] private string gameSceneName = "GameScene";
 
     void Start()
     {

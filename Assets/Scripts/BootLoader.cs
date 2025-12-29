@@ -16,7 +16,7 @@ public class BootLoader : MonoBehaviour
     private IEnumerator LoadFirstMenu()
     {
         yield return new WaitForSeconds(delay);
-        //SceneManager.LoadScene("SDKDiscovery");
+        //SceneManager.LoadScene("GameScene");
         SceneManager.LoadScene("FirstMenu");
     }
 }
