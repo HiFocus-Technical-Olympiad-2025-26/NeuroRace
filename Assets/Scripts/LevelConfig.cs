@@ -8,7 +8,11 @@ public class LevelConfig : ScriptableObject
     [Header("Level Info")]
     public string levelName;
 
-    [Header("Car Setup")]
-    public WheelSetup wheelSetup;
-    public CarSettings carSettings;
+    [Header("Player car Setup")]
+    public WheelSetup playerWheelSetup;
+    public CarSettings playerCarSettings;
+
+    [Header("AI car Setup")]
+    public WheelSetup AIWheelSetup;
+    public CarSettings AICarSettings;
 }

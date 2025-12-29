@@ -6297,6 +6297,9 @@ MonoBehaviour:
   ShowNeuroObstacleToggle: {fileID: 1356953703}
   skinSwitcher: {fileID: 844400492}
   gameSettings: {fileID: 11400000, guid: d2d733930fd2ae442ba7fa3e41579bdb, type: 2}
+  levelConfigs:
+  - {fileID: 11400000, guid: 1a42bb4c4d424d0458f378dae1fa0de5, type: 2}
+  - {fileID: 11400000, guid: a417dee78853f58489f8801b9534d33c, type: 2}
 --- !u!4 &1760160524
 Transform:
   m_ObjectHideFlags: 0

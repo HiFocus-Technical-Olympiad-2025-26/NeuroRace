@@ -108,6 +108,15 @@ public class Car : MonoBehaviour
         UpdateWheelPose(wheelColliderRightBack, wheelRightBack, false);
     }
 
+    public void ApplyCarSettings(CarSettings settings)
+    {
+        this.motorTorque = settings.motorTorque;
+        this.brakeTorque = settings.brakeTorque;
+        this.lowSpeedSteer = settings.lowSpeedSteer;
+        this.highSpeedSteer = settings.highSpeedSteer;
+        this.steerSpeedThreshold = settings.steerSpeedThreshold;
+    }
+
 
     #region WheelSetup
     void UpdateWheelPose(WheelCollider col, Transform wheel, bool isLeft)

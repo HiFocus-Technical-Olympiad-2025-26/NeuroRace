@@ -54,7 +54,8 @@ public class FirstMenu : MonoBehaviour
 
         SpawnNeuroManager(neuroManagerSimulatedPrefab);
 
-        SceneManager.LoadScene("SDKDiscovery");
+        //SceneManager.LoadScene("SDKDiscovery");
+        SceneManager.LoadScene("NewGame");
     }
 
     private void SpawnNeuroManager(GameObject prefab)

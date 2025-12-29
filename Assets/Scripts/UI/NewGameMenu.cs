@@ -30,6 +30,7 @@ public class NewGameMenu : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField] private GameSettingsSO gameSettings;
+    [SerializeField] private List<LevelConfig> levelConfigs;
 
     private bool hasFocusedBtn = false;
 
@@ -46,6 +47,12 @@ public class NewGameMenu : MonoBehaviour
     {
         StartPositionDropdown.ClearOptions();
         StartPositionDropdown.AddOptions(Enum.GetNames(typeof(StartPositionType)).ToList());
+
+        if(levelConfigs != null && levelConfigs.Count > 0)
+        {
+            CarSettings.ClearOptions();
+            CarSettings.AddOptions(levelConfigs.Select(lc => lc.levelName).ToList());
+        }
     }
 
     private void Start()
@@ -55,7 +62,6 @@ public class NewGameMenu : MonoBehaviour
         StartPositionDropdown.onValueChanged.AddListener(OnStartPositionDropdownChanged);
         StartPositionSlider.onValueChanged.AddListener(OnStartPositionSliderChanged);
         NumOfAIsSlider.onValueChanged.AddListener(OnNumOfAIsSliderChanged);
-        var positionType = (StartPositionType)Enum.Parse(typeof(StartPositionType), StartPositionDropdown.options[StartPositionDropdown.value].text);
 
         UpdateNumOfAIsUI();
     }
@@ -86,7 +92,12 @@ public class NewGameMenu : MonoBehaviour
         gameSettings.ShowNeuroObstacle = ShowNeuroObstacleToggle.isOn;
         gameSettings.skinIndex = skinSwitcher.GetSkinIndex();
 
-        //TODO: Set car and wheel settings based on CarSettings dropdown
+        LevelConfig selectedLC = levelConfigs[CarSettings.value];
+        gameSettings.playerCarSettings = selectedLC.playerCarSettings;
+        gameSettings.playerWheelSetup = selectedLC.playerWheelSetup;
+        gameSettings.AICarSettings = selectedLC.AICarSettings;
+        gameSettings.AIWheelSetup = selectedLC.AIWheelSetup;
+
 
         SceneManager.LoadScene(GameSceneName);
     }

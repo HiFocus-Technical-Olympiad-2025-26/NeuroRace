@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -48,9 +49,15 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        if (player == null || aiPrefab == null || gameSettings == null ||
-            gameSettings.StartPosition < 0 || gameSettings.NumOfAIs < 0 || gameSettings.StartPosition > gameSettings.NumOfAIs)
+        if (player == null || aiPrefab == null)
             return;
+
+        if(gameSettings == null ||
+            gameSettings.StartPosition < 0 || 
+            gameSettings.NumOfAIs < 0 || 
+            gameSettings.StartPosition > gameSettings.NumOfAIs)
+            SceneManager.LoadScene("NewGame");
+
 
         CurrentState = GameState.Idle;
 
@@ -66,10 +73,15 @@ public class GameManager : MonoBehaviour
         var PlayerCar = player.GetComponent<Car>();
 
         PlayerCar.ApplyWheelParameters(gameSettings.playerWheelSetup);
+        PlayerCar.ApplyCarSettings(gameSettings.playerCarSettings);
 
-        //PlayerCar.ApplyCarSettings(gameSettings.playerCarSettings);
+        int startPosition;
+        if(gameSettings.RandomizeStartPosition)
+            startPosition = Random.Range(0, gameSettings.NumOfAIs);
+        else
+            startPosition = gameSettings.StartPosition;
 
-        spawnSystem.SpawnCarOnSpecificStart(player.transform, gameSettings.StartPosition);
+        spawnSystem.SpawnCarOnSpecificStart(player.transform, startPosition);
         PlayerCar.isThrottleEnabled = false;
         PlayerCar.spawner = spawnSystem;
         PlayerCar.SetSkin(gameSettings.skinIndex);
@@ -82,12 +94,12 @@ public class GameManager : MonoBehaviour
 
             var aiCar = ai.GetComponent<Car>();
             aiCar.ApplyWheelParameters(gameSettings.AIWheelSetup);
-            // aiCar.ApplyCarSettings(gameSettings.AICarSettings);
+            aiCar.ApplyCarSettings(gameSettings.AICarSettings);
             aiCar.spawner = spawnSystem;
 
             aiCar.isThrottleEnabled = false;
 
-            if (nextAIStartPosition == gameSettings.StartPosition)
+            if (nextAIStartPosition == startPosition)
                 nextAIStartPosition++;
             spawnSystem.SpawnCarOnSpecificStart(ai.transform, nextAIStartPosition);
             nextAIStartPosition++;
