@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Samples/NextMind SDK/1.5.1/Examples/Calibration/Calibration.unity
     guid: 7ca228870b8a84b409095067aeb1296f
   - enabled: 1
+    path: Assets/Scenes/NewGame.unity
+    guid: e8b6930d4f250654b91c52a77aea587b
+  - enabled: 1
     path: Assets/Scenes/SDKDiscovery.unity
     guid: 87f24204a74213841bd5b0a5935f2762
   - enabled: 1

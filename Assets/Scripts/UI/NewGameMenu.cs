@@ -1,27 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static NewGameMenu;
 
 public class NewGameMenu : MonoBehaviour
 {
     [Header("UI Navigation")]
     public GameObject firstButton;
+    [SerializeField] string GameSceneName = "SDKDiscovery";
 
     [Header("UI Inputs")]
     [SerializeField] private TMP_Dropdown CarSettings;
     [SerializeField] private TMP_Dropdown StartPositionDropdown;
     [SerializeField] private Slider StartPositionSlider;
     [SerializeField] private TextMeshProUGUI StartPositionValueText;
-    private StartPositionType startPositionType;
     [SerializeField] private Slider NumOfAIsSlider;
     [SerializeField] private TextMeshProUGUI NumOfAIsValueText;
     [SerializeField] private Toggle ShowNeuroObstacleToggle;
+    [SerializeField] private SkinSwitcher skinSwitcher;
 
     [Header("Settings")]
     [SerializeField] private GameSettingsSO gameSettings;
@@ -50,6 +55,7 @@ public class NewGameMenu : MonoBehaviour
         StartPositionDropdown.onValueChanged.AddListener(OnStartPositionDropdownChanged);
         StartPositionSlider.onValueChanged.AddListener(OnStartPositionSliderChanged);
         NumOfAIsSlider.onValueChanged.AddListener(OnNumOfAIsSliderChanged);
+        var positionType = (StartPositionType)Enum.Parse(typeof(StartPositionType), StartPositionDropdown.options[StartPositionDropdown.value].text);
 
         UpdateNumOfAIsUI();
     }
@@ -70,13 +76,19 @@ public class NewGameMenu : MonoBehaviour
         }
     }
 
-    public void BtnSubmit()
+    public void BtnNewGame()
     {
+        StartPositionType startPositionType = (StartPositionType)Enum.Parse(typeof(StartPositionType), StartPositionDropdown.options[StartPositionDropdown.value].text);
+
         gameSettings.NumOfAIs = Mathf.RoundToInt(NumOfAIsSlider.value);
         gameSettings.StartPosition = Mathf.RoundToInt(StartPositionSlider.value);
+        gameSettings.RandomizeStartPosition = startPositionType == StartPositionType.Random;
         gameSettings.ShowNeuroObstacle = ShowNeuroObstacleToggle.isOn;
+        gameSettings.skinIndex = skinSwitcher.GetSkinIndex();
 
-        Debug.Log("Game settings saved");
+        //TODO: Set car and wheel settings based on CarSettings dropdown
+
+        SceneManager.LoadScene(GameSceneName);
     }
 
     private void UpdateNumOfAIsUI()

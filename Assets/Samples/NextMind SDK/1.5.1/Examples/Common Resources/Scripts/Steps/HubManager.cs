@@ -85,7 +85,8 @@ namespace NextMind.Examples
             //hubPanel.SetActive(true);
 
 
-            SceneManager.LoadScene("SDKDiscovery");
+            //SceneManager.LoadScene("SDKDiscovery");
+            SceneManager.LoadScene("NewGame");
         }
 
         /// <summary>

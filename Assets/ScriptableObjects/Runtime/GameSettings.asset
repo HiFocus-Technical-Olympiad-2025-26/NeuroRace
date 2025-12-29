@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b42c869b51bdb64e9707b79bd59961a, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  playerCarSettings: {fileID: 0}
-  AICarSettings: {fileID: 0}
-  playerWheelSetup: {fileID: 0}
-  AIWheelSetup: {fileID: 0}
+  playerCarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
+  AICarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
+  playerWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
+  AIWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
   ShowNeuroObstacle: 0
-  StartPosition: 0
-  NumOfAIs: 0
-  skinIndex: 0
+  StartPosition: 1
+  RandomizeStartPosition: 0
+  NumOfAIs: 1
+  skinIndex: 1

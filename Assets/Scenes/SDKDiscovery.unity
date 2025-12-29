@@ -5423,7 +5423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c7acf0352d1f5049b1907766ea913ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSettings: {fileID: 11400000, guid: 0aa55de29ea317549a64d864fde61754, type: 2}
+  gameSettings: {fileID: 11400000, guid: d2d733930fd2ae442ba7fa3e41579bdb, type: 2}
   spawnSystem: {fileID: 1834926352}
   startLights: {fileID: 5439165822543913577}
   player: {fileID: 3179265311684475705}
