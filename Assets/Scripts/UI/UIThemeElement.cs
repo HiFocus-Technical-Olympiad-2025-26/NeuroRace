@@ -28,6 +28,7 @@ public class UIThemeElement : MonoBehaviour
 
     public ElementType type;
     public ThemeColorType colorType;
+    [Range(0f, 1f)] public float alpha = 1f; // currently only used for Image type
 
     private void OnEnable()
     {
@@ -82,7 +83,11 @@ public class UIThemeElement : MonoBehaviour
         {
             case ElementType.Image:
                 if (TryGetComponent<Image>(out var img))
-                    img.color = chosen;
+                {
+                    Color c = chosen;
+                    c.a = alpha;
+                    img.color = c;
+                }
                 break;
 
             case ElementType.Text:
