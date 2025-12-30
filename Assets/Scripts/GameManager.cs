@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameSettingsSO gameSettings;
     [SerializeField] private SpawnSystem spawnSystem;
     [SerializeField] private StartLights startLights;
+    [SerializeField] private LapTimer lapTimer;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject aiPrefab;
     [SerializeField] private NeuroObstacleController neuroObstacleController;
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
 
 
         CurrentState = GameState.Idle;
+
+        if(lapTimer != null)
+            lapTimer.ResetTimer();
 
         if (AIInstances.Count > 0)
         {

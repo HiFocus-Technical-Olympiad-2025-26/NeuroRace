@@ -6,7 +6,6 @@ using UnityEngine;
 public class LapTimer : MonoBehaviour
 {
     public List<Collider> sectorTriggers = new List<Collider>();
-    [SerializeField] private string FileName = "LapTimes.json";
 
     private float lapStartTime;
     private float sectorStartTime;
@@ -14,7 +13,6 @@ public class LapTimer : MonoBehaviour
 
     private Dictionary<int, float> sectorTimes = new Dictionary<int, float>();
 
-    #region Unity
     void Start()
     {
         for (int i = 0; i < sectorTriggers.Count; i++)
@@ -25,12 +23,37 @@ public class LapTimer : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (nextSectorIndex == -1)
+            return;
+
+        LiveLapState.CurrentLapTime = Round3(Time.time - lapStartTime);
+        LiveLapState.CurrentSectors[LiveLapState.CurrentSectorIndex] = Round3(Time.time - sectorStartTime);
+    }
+
+    public void ResetTimer()
+    {
+        nextSectorIndex = -1;
+        LiveLapState.CurrentLapTime = 0f;
+        LiveLapState.CurrentSectors.Clear();
+        LiveLapState.CurrentSectorIndex = 0;
+    }
+
     private void OnSectorTriggered(int index)
     {
         if (nextSectorIndex == -1)
         {
             lapStartTime = Time.time;
             sectorStartTime = Time.time;
+
+            LiveLapState.CurrentLapTime = 0f;
+            LiveLapState.CurrentSectors.Clear();
+
+            for (int i = 0; i < sectorTriggers.Count; i++)
+                LiveLapState.CurrentSectors.Add(0f);
+
+            LiveLapState.CurrentSectorIndex = 0;
 
             nextSectorIndex = 1;
             return;
@@ -44,22 +67,37 @@ public class LapTimer : MonoBehaviour
 
         sectorTimes[index] = sectorTime;
 
-        Debug.Log($"Sector {index} time: {sectorTime}s");
+        //Debug.Log($"Sector {index} time: {sectorTime}s");
 
         sectorStartTime = now;
+        LiveLapState.CurrentSectorIndex = (LiveLapState.CurrentSectorIndex + 1) % sectorTriggers.Count;
+        float currentLapTime = Round3(now - lapStartTime);
+
 
         if (index == 0 && nextSectorIndex == 0 && now != lapStartTime)
         {
-            float lapTime = Round3(now - lapStartTime);
-            Debug.Log($"LAP COMPLETED: {lapTime}s");
+            //Debug.Log($"LAP COMPLETED: {currentLapTime}s");
 
+            // Live lap state update
+            LiveLapState.PreviousLapTime = currentLapTime;
+            LiveLapState.PreviousSectors = new List<float>(sectorTimes.Count);
+            for (int i = 0; i < sectorTimes.Count; i++)
+                LiveLapState.PreviousSectors.Add(sectorTimes[i]);
+
+            for (int i = 0; i < sectorTimes.Count; i++)
+                LiveLapState.CurrentSectors[i] = 0f;
+
+            // Save lap time
             List<float> sectorsCopy = new List<float>(sectorTimes.Values);
-            SaveLapTime(lapTime, sectorsCopy);
+            LapTimesSaver.SaveLapTime(currentLapTime, sectorsCopy);
 
+            // Reset for next lap
             lapStartTime = Time.time;
             sectorStartTime = Time.time;
 
             nextSectorIndex = 1;
+            LiveLapState.CurrentSectorIndex = 0;
+
             return;
         }
 
@@ -79,94 +117,6 @@ public class LapTimer : MonoBehaviour
             }
         }
     }
-    #endregion
 
-    #region Saving
-    public void SaveLapTime(float lapTime, List<float> sectors)
-    {
-        string path = Path.Combine(Application.persistentDataPath, FileName);
-        Debug.Log("Full file path: " + path);
-
-        TimeStats data;
-
-        if (File.Exists(path))
-        {
-            string json = File.ReadAllText(path);
-            data = JsonUtility.FromJson<TimeStats>(json);
-        }
-        else
-        {
-            data = new TimeStats();
-        }
-
-        data.LapTimes.Add(lapTime);
-
-        if (data.FastestTime == 0f || lapTime < data.FastestTime)
-        {
-            Debug.Log($"New best lap time: {lapTime} (last best: {data.FastestTime}");
-            data.FastestTime = lapTime;
-        }
-
-        if (data.SectorTimes == null || data.SectorTimes.Count == 0)
-        {
-            data.SectorTimes = new List<float>(sectors);
-        }
-        else
-        {
-            for (int i = 0; i < sectors.Count; i++)
-            {
-                if (sectors[i] < data.SectorTimes[i])
-                {
-                    Debug.Log($"New best time in sector {i}: {sectors[i]} (last best: {data.SectorTimes[i]}");
-                    data.SectorTimes[i] = sectors[i];
-                }
-            }
-        }
-
-        string newJson = JsonUtility.ToJson(data, true);
-        File.WriteAllText(path, newJson);
-
-        Debug.Log("Saved lap time: " + lapTime);
-    }
-
-    float Round3(float v)
-    {
-        return Mathf.Round(v * 1000f) / 1000f;
-    }
-
-    public TimeStats LoadAll()
-    {
-        string path = Path.Combine(Application.persistentDataPath, FileName);
-
-        if (!File.Exists(path))
-            return new TimeStats();
-
-        string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<TimeStats>(json);
-    }
-
-    public List<float> LoadLapTimes()
-    {
-        return LoadAll().LapTimes;
-    }
-
-    public List<float> LoadSectorTimes()
-    {
-        return LoadAll().SectorTimes;
-    }
-
-    public float LoadFastestTime()
-    {
-        return LoadAll().FastestTime;
-    }
+    float Round3(float v) => Mathf.Round(v * 1000f) / 1000f;
 }
-
-[System.Serializable]
-public class TimeStats
-{
-    public float FastestTime;
-    public List<float> SectorTimes = new List<float>();
-    public List<float> LapTimes = new List<float>();
-}
-
-#endregion
