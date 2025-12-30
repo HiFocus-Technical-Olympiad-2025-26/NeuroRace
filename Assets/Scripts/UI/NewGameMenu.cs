@@ -87,7 +87,29 @@ public class NewGameMenu : MonoBehaviour
         StartPositionType startPositionType = (StartPositionType)Enum.Parse(typeof(StartPositionType), StartPositionDropdown.options[StartPositionDropdown.value].text);
 
         gameSettings.NumOfAIs = Mathf.RoundToInt(NumOfAIsSlider.value);
-        gameSettings.StartPosition = Mathf.RoundToInt(StartPositionSlider.value);
+        int startPos;
+        switch(startPositionType)
+        {
+            case StartPositionType.Pole:
+                startPos = 0;
+                break;
+            case StartPositionType.Second:
+                startPos = 1;
+                break;
+            case StartPositionType.Last:
+                startPos = gameSettings.NumOfAIs;
+                break;
+            case StartPositionType.Random:
+                startPos = 0;
+                break;
+            case StartPositionType.Specific:
+                startPos = Mathf.RoundToInt(StartPositionSlider.value) - 1;
+                break;
+            default:
+                startPos = 0;
+                break;
+        }
+        gameSettings.StartPosition = startPos;
         gameSettings.RandomizeStartPosition = startPositionType == StartPositionType.Random;
         gameSettings.ShowNeuroObstacle = ShowNeuroObstacleToggle.isOn;
         gameSettings.skinIndex = skinSwitcher.GetSkinIndex();
