@@ -48,7 +48,7 @@ public class AIStuckRespawn : MonoBehaviour
         /*if(isUpsideDown)
             Debug.Log("Car is upside down.");*/
 
-        if (isUpsideDown || isSlow)
+        if (isUpsideDown || isSlow || car.spawner.IsCarGoingWrongDirection(car.transform, 0f))
         {
             stuckTimer += Time.fixedDeltaTime;
         }
@@ -57,7 +57,7 @@ public class AIStuckRespawn : MonoBehaviour
             stuckTimer = 0f;
         }
 
-        if (stuckTimer >= stuckTime)
+        if (stuckTimer >= stuckTime || car.spawner.IsCarGoingWrongDirection(car.transform, -0.5f))
         {
             Respawn();
         }

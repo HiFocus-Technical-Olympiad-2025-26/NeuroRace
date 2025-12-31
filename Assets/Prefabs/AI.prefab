@@ -1374,7 +1374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa1677becce2bb469d52f052bf4e910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stuckTime: 3
+  stuckTime: 2
   upsideDownDot: 0.4
 --- !u!1 &7996388320744526506
 GameObject:

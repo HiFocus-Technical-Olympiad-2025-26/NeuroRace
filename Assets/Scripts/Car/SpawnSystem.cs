@@ -105,4 +105,56 @@ public class SpawnSystem : MonoBehaviour
 
         ResetRigidbody(car);
     }
+
+    public bool IsCarGoingWrongDirection(Transform car, float dotThreshold = 0.0f)
+    {
+        if (car == null || trackPoints.Count < 2)
+            return false;
+
+        int nearestIndex = 0;
+        float minDist = Vector3.SqrMagnitude(car.position - trackPoints[0].position);
+
+        for (int i = 1; i < trackPoints.Count; i++)
+        {
+            float dist = Vector3.SqrMagnitude(car.position - trackPoints[i].position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                nearestIndex = i;
+            }
+        }
+
+        int prevIndex = (nearestIndex - 1 + trackPoints.Count) % trackPoints.Count;
+        int nextIndex = (nearestIndex + 1) % trackPoints.Count;
+
+        Vector3 pPrev = trackPoints[prevIndex].position;
+        Vector3 pCurr = trackPoints[nearestIndex].position;
+        Vector3 pNext = trackPoints[nextIndex].position;
+
+        // segment vectors
+        Vector3 prevSeg = pCurr - pPrev;
+        Vector3 nextSeg = pNext - pCurr;
+
+        // vector from segment start to car
+        Vector3 toCarPrev = car.position - pPrev;
+        Vector3 toCarNext = car.position - pCurr;
+
+        float tPrev = Vector3.Dot(toCarPrev, prevSeg) / prevSeg.sqrMagnitude;
+        float tNext = Vector3.Dot(toCarNext, nextSeg) / nextSeg.sqrMagnitude;
+
+        bool onPrevSegment = tPrev >= 0f && tPrev <= 1f;
+        bool onNextSegment = tNext >= 0f && tNext <= 1f;
+
+        Vector3 trackDir;
+        if (onPrevSegment && !onNextSegment)
+            trackDir = prevSeg.normalized;
+        else if (onNextSegment && !onPrevSegment)
+            trackDir = nextSeg.normalized;
+        else
+            trackDir = (Vector3.SqrMagnitude(toCarPrev) < Vector3.SqrMagnitude(toCarNext)) ? 
+                    prevSeg.normalized : nextSeg.normalized;
+
+        float dot = Vector3.Dot(car.forward.normalized, trackDir);
+        return dot < dotThreshold;
+    }
 }

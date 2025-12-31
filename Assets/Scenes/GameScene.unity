@@ -8183,6 +8183,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1878361021620101430, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+      propertyPath: wrongDirectionEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: cb41365dbdfe67246b6fc26e778cb3c9, type: 2}
+    - target: {fileID: 1878361021620101430, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
+      propertyPath: wrongDirDotThreshold
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2183852815477063536, guid: 9cd9f977dd8a1be4d9bda30a5c30f04b, type: 3}
       propertyPath: m_Layer
       value: 6
