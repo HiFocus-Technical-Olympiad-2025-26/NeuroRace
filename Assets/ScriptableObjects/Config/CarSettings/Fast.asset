@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b1202c61e5f4847aeff1539631a377, type: 3}
   m_Name: Fast
   m_EditorClassIdentifier: 
-  motorTorque: 4000
-  brakeTorque: 8000
+  motorTorque: 8000
+  brakeTorque: 16000
   lowSpeedSteer: 20
   highSpeedSteer: 10
   steerSpeedThreshold: 25

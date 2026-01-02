@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74b1202c61e5f4847aeff1539631a377, type: 3}
   m_Name: Basic
   m_EditorClassIdentifier: 
-  motorTorque: 1500
-  brakeTorque: 3000
+  motorTorque: 2500
+  brakeTorque: 5000
   lowSpeedSteer: 20
   highSpeedSteer: 10
   steerSpeedThreshold: 25

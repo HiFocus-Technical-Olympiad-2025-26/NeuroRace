@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelName: Arcade
   playerWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
-  playerCarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
+  playerCarSettings: {fileID: 11400000, guid: 035d251a6c640f541b0b33fc5813da9c, type: 2}
   AIWheelSetup: {fileID: 11400000, guid: d26ce553a24a357428c9dc58d74cac25, type: 2}
   AICarSettings: {fileID: 11400000, guid: 3107f6815cfb76e4ebae8fe26fcaf98d, type: 2}
