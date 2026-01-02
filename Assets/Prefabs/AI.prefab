@@ -1356,8 +1356,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   minSpeed: 10
-  brakingThreshold: 2
+  brakingThreshold: 1.5
   turnClearDistance: 50
+  maxSpeed: 25
   lrTransform: {fileID: 3566064743415301276}
   rrTransform: {fileID: 3566064743932805259}
   laneRatio: 1
