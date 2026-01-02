@@ -6332,7 +6332,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSettings: {fileID: 11400000, guid: d2d733930fd2ae442ba7fa3e41579bdb, type: 2}
-  pauseEvent: {fileID: 11400000, guid: d59c2631af0cd0a478e222bef4eeef62, type: 2}
   spawnSystem: {fileID: 1834926352}
   startLights: {fileID: 5439165822543913577}
   lapTimer: {fileID: 341735364}

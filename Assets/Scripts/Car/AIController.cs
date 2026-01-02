@@ -11,7 +11,6 @@ public class AIController : MonoBehaviour
     [SerializeField] private int minSpeed = 10;
     [SerializeField] private float brakingThreshold = 15;
     [SerializeField] private int turnClearDistance = 20;
-    [SerializeField] private int maxSpeed = 25;
 
     [Header("Refferences")]
     [SerializeField] private Transform lrTransform;
@@ -41,13 +40,7 @@ public class AIController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (car.speed < maxSpeed)
-        {
-            carInput.Throttle = 1;
-        }
-        else {
-            carInput.Throttle = 0;
-        }
+        carInput.Throttle = 1;
 
         var frontRay = new Ray(transform.position, transform.forward);
         RaycastHit frHitInfo;
