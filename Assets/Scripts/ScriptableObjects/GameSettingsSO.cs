@@ -12,4 +12,5 @@ public class GameSettingsSO : ScriptableObject
     public bool RandomizeStartPosition;
     public int NumOfAIs;
     public int skinIndex;
+    public int skyboxIndex;
 }

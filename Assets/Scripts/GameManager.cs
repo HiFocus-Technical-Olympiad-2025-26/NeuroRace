@@ -17,12 +17,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameSettingsSO gameSettings;
     [SerializeField] private SpawnSystem spawnSystem;
-    [SerializeField] private StartLights startLights;
     [SerializeField] private LapTimer lapTimer;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject aiPrefab;
     [SerializeField] private NeuroObstacleController neuroObstacleController;
+
+    [Header("Start lights")]
+    [SerializeField] private StartLights startLights;
     [SerializeField] private float LightSequenceInterval = 1f;
+
+    [Header("Skybox")]
+    [SerializeField] private List<Material> SkyboxMaterials;
     private List<GameObject> AIInstances = new List<GameObject>();
 
     public static GameManager Instance { get; private set; }
@@ -39,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        ApplySkybox();
         ResetGame();
     }
 
@@ -151,5 +157,16 @@ public class GameManager : MonoBehaviour
         {
             AI.GetComponent<Car>().isThrottleEnabled = enable;
         }
+    }
+
+    private void ApplySkybox()
+    {
+        if (SkyboxMaterials == null || SkyboxMaterials.Count == 0)
+            return;
+
+        int index = Mathf.Clamp(gameSettings.skyboxIndex, 0, SkyboxMaterials.Count - 1);
+
+        RenderSettings.skybox = SkyboxMaterials[index];
+        DynamicGI.UpdateEnvironment();
     }
 }

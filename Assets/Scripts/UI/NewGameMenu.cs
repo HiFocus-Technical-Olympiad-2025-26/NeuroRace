@@ -10,7 +10,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static NewGameMenu;
 
 public class NewGameMenu : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class NewGameMenu : MonoBehaviour
 
     [Header("UI Inputs")]
     [SerializeField] private TMP_Dropdown CarSettings;
+    [SerializeField] private TMP_Dropdown SkyboxDropdown;
     [SerializeField] private TMP_Dropdown StartPositionDropdown;
     [SerializeField] private Slider StartPositionSlider;
     [SerializeField] private TextMeshProUGUI StartPositionValueText;
@@ -119,6 +119,8 @@ public class NewGameMenu : MonoBehaviour
         gameSettings.playerWheelSetup = selectedLC.playerWheelSetup;
         gameSettings.AICarSettings = selectedLC.AICarSettings;
         gameSettings.AIWheelSetup = selectedLC.AIWheelSetup;
+
+        gameSettings.skyboxIndex = SkyboxDropdown.value;
 
 
         SceneManager.LoadScene(GameSceneName);
