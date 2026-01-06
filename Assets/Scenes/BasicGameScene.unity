@@ -3300,7 +3300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hudSceneName: HUD
-  gameSceneName: GameScene
+  gameSceneName: BasicGameScene
 --- !u!4 &746068356
 Transform:
   m_ObjectHideFlags: 0
