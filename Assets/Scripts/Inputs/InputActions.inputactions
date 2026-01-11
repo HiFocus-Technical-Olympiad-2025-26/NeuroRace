@@ -251,6 +251,17 @@
                 },
                 {
                     "name": "",
+                    "id": "1b646fb9-27a6-4abc-a51c-d5e08ec74745",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2995e145-2f16-478a-9f63-299ab15e6256",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -328,6 +339,17 @@
                 },
                 {
                     "name": "",
+                    "id": "97f46cf7-172b-44b6-b609-46e62d367416",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Respawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fd357f0e-d1ea-40e1-9427-6434e16f3beb",
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
@@ -350,17 +372,6 @@
                 },
                 {
                     "name": "",
-                    "id": "a4798d16-86f0-4d9b-85fb-9844aec051f5",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SpawnStart",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "8aee6db1-3967-4d92-b082-dec5a1481f6c",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
@@ -374,6 +385,17 @@
                     "name": "",
                     "id": "31e7e011-a01d-4bda-9d9b-c2b025872756",
                     "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "216a2192-2372-4e2e-95aa-558c6b9c1634",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -415,61 +437,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
-                    "id": "7f6ed663-fd20-4cac-a8f0-925e80f27c85",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "down",
-                    "id": "9e5eaffb-0201-4905-adb5-b1c3f28e792e",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "up",
-                    "id": "adee8dcd-d008-4652-9c15-c7deea5d676b",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "8d387237-ea0e-439b-a0bd-74e03e1c7234",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "d5f9887c-ff6e-4bb0-84e4-31e76092021c",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CameraRotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "edd041bc-46e9-4d9b-8461-5181b12c2235",
                     "path": "<Gamepad>/rightStick",
@@ -494,7 +461,7 @@
                 {
                     "name": "",
                     "id": "37cc7454-0529-4e8e-9df7-6530bd0aea1f",
-                    "path": "<Gamepad>/dpad/up",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -587,6 +554,24 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Gamepad_LeftShoulder",
+                    "type": "Button",
+                    "id": "2a09fcd1-6457-416f-8c8a-050afd473ed1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Gamepad_RightShoulder",
+                    "type": "Button",
+                    "id": "d1e8c034-9a93-41b9-95c4-7566eb382da5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 }
             ],
@@ -852,6 +837,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "NextTheme",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a0b334a-737e-424e-b1f2-38f94bb9b3eb",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gamepad_LeftShoulder",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2e896d09-f8d1-486e-a0f8-fa32a8aef94c",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gamepad_RightShoulder",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

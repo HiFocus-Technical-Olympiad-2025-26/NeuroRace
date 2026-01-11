@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuController : MonoBehaviour
 {
     [Header("UI")]
     [SerializeField] private GameObject menuRoot;
+    public GameObject firstUIObject;
 
     [Header("Scenes")]
     [SerializeField] private string NewGameSceneName = "NewGame";
@@ -36,6 +39,15 @@ public class PauseMenuController : MonoBehaviour
             else
                 PauseGame();
         }
+
+
+        Vector2 dir = InputManager.Instance.Menu.Direction;
+        bool isSomethingSelected = EventSystem.current.currentSelectedGameObject != null;
+        if (!isSomethingSelected && dir != Vector2.zero)
+            EventSystem.current.SetSelectedGameObject(firstUIObject);
+
+        if (Mouse.current.delta.ReadValue().sqrMagnitude > 0.1f)
+            EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void PauseGame()

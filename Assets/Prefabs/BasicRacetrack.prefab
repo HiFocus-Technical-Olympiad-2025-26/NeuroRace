@@ -526,7 +526,7 @@ GameObject:
   m_Component:
   - component: {fileID: 171390713880665931}
   m_Layer: 0
-  m_Name: racetrack
+  m_Name: BasicRacetrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,8 +15,6 @@ public class FirstMenu : MonoBehaviour
     [SerializeField] private GameObject neuroManagerRealPrefab;
     [SerializeField] private GameObject neuroManagerSimulatedPrefab;
 
-    private bool hasFocusedBtn = false;
-
 
     private void Start()
     {
@@ -27,16 +25,12 @@ public class FirstMenu : MonoBehaviour
     {
         Vector2 dir = InputManager.Instance.Menu.Direction;
 
-        if (!hasFocusedBtn && dir != Vector2.zero)
-        {
+        bool isSomethingSelected = EventSystem.current.currentSelectedGameObject != null;
+        if (!isSomethingSelected && dir != Vector2.zero)
             EventSystem.current.SetSelectedGameObject(firstButton);
-            hasFocusedBtn = true;
-        }
 
         if (Mouse.current.delta.ReadValue().sqrMagnitude > 0.1f)
-        {
             EventSystem.current.SetSelectedGameObject(null);
-        }
     }
 
     public void Calibrate()

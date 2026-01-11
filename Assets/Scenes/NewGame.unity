@@ -3216,6 +3216,7 @@ GameObject:
   - component: {fileID: 962022684}
   - component: {fileID: 962022687}
   - component: {fileID: 962022686}
+  - component: {fileID: 962022688}
   - component: {fileID: 962022685}
   m_Layer: 5
   m_Name: Dropdown
@@ -3233,7 +3234,7 @@ RectTransform:
   m_GameObject: {fileID: 962022683}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.0019, y: 3.0019, z: 3.0019}
+  m_LocalScale: {x: 3.0019, y: 3.0018995, z: 3.0018995}
   m_Children:
   - {fileID: 418071397}
   - {fileID: 1285939240}
@@ -3243,7 +3244,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 243, y: 4.999962}
+  m_AnchoredPosition: {x: 242.99995, y: 5.0000505}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962022685
@@ -3259,10 +3260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 1155849645}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -3344,6 +3345,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962022683}
   m_CullTransparentMesh: 1
+--- !u!114 &962022688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962022683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  colorType: 1
+  alpha: 1
 --- !u!1 &968727508
 GameObject:
   m_ObjectHideFlags: 0
@@ -3503,6 +3519,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 976014110}
+  - component: {fileID: 976014112}
+  - component: {fileID: 976014113}
   - component: {fileID: 976014111}
   m_Layer: 5
   m_Name: Slider
@@ -3547,10 +3565,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1530584300}
+    m_SelectOnDown: {fileID: 2129482522}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -3585,6 +3603,35 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &976014112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976014109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38845c1df9fd14a44a349bcbb34e388b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  redirectUp: {fileID: 1530584300}
+  redirectDown: {fileID: 2129482522}
+--- !u!114 &976014113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 976014109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 7
+  colorType: 1
+  alpha: 1
 --- !u!1 &993504038
 GameObject:
   m_ObjectHideFlags: 0
@@ -4682,6 +4729,7 @@ GameObject:
   - component: {fileID: 1155849644}
   - component: {fileID: 1155849647}
   - component: {fileID: 1155849646}
+  - component: {fileID: 1155849648}
   - component: {fileID: 1155849645}
   m_Layer: 5
   m_Name: Dropdown
@@ -4725,10 +4773,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 962022685}
+    m_SelectOnDown: {fileID: 1530584300}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -4810,6 +4858,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1155849643}
   m_CullTransparentMesh: 1
+--- !u!114 &1155849648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155849643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  colorType: 1
+  alpha: 1
 --- !u!1 &1197641027
 GameObject:
   m_ObjectHideFlags: 0
@@ -5432,6 +5495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1356953702}
+  - component: {fileID: 1356953705}
   - component: {fileID: 1356953703}
   - component: {fileID: 1356953704}
   m_Layer: 5
@@ -5475,10 +5539,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 2129482522}
+    m_SelectOnDown: {fileID: 1948663636}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -5518,6 +5582,21 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1356953701}
   m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
+  colorType: 1
+  alpha: 1
+--- !u!114 &1356953705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356953701}
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
   m_Name: 
@@ -6281,6 +6360,7 @@ GameObject:
   - component: {fileID: 1530584297}
   - component: {fileID: 1530584299}
   - component: {fileID: 1530584298}
+  - component: {fileID: 1530584301}
   - component: {fileID: 1530584300}
   m_Layer: 5
   m_Name: Dropdown
@@ -6362,10 +6442,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1155849645}
+    m_SelectOnDown: {fileID: 976014111}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -6403,6 +6483,21 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &1530584301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530584296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 8
+  colorType: 1
+  alpha: 1
 --- !u!1 &1545367801
 GameObject:
   m_ObjectHideFlags: 0
@@ -7389,8 +7484,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebc0a7bbb11e6c40aabaa76c35c866d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstButton: {fileID: 0}
-  GameSceneName: BasicGameScene
+  firstUIObject: {fileID: 962022683}
+  GameSceneName: TrackPickerMenu
   CarSettings: {fileID: 1155849645}
   SkyboxDropdown: {fileID: 962022685}
   StartPositionDropdown: {fileID: 1530584300}
@@ -8558,10 +8653,10 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnUp: {fileID: 1356953703}
+    m_SelectOnDown: {fileID: 962022685}
+    m_SelectOnLeft: {fileID: 962022685}
+    m_SelectOnRight: {fileID: 962022685}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -9326,6 +9421,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2129482521}
+  - component: {fileID: 2129482523}
   - component: {fileID: 2129482522}
   m_Layer: 5
   m_Name: NumOfAIsSlider
@@ -9371,10 +9467,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 976014111}
+    m_SelectOnDown: {fileID: 1356953703}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -9409,3 +9505,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2129482523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2129482520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc03b056a79364899f97138afdc627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 7
+  colorType: 1
+  alpha: 1

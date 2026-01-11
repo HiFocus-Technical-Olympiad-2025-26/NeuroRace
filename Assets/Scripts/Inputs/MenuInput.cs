@@ -24,6 +24,9 @@ public class MenuInput
     public bool RepeatedDirectionLeft { get; private set; }
     public bool RepeatedDirectionRight { get; private set; }
 
+    public bool GamepadLeftShoulder { get; private set; } = false;
+    public bool GamepadRightShoulder { get; private set; } = false;
+
 
     public MenuInput(InputActions.MenuActions m)
 	{
@@ -55,6 +58,12 @@ public class MenuInput
 
 		m.Back.performed += _ => Back = true;
 		m.Back.canceled += _ => Back = false;
+
+        m.Gamepad_LeftShoulder.performed += _ => GamepadLeftShoulder = true;
+        m.Gamepad_LeftShoulder.canceled += _ => GamepadLeftShoulder = false;
+
+        m.Gamepad_RightShoulder.performed += _ => GamepadRightShoulder = true;
+        m.Gamepad_RightShoulder.canceled += _ => GamepadRightShoulder = false;
     }
 
     public void Update()
@@ -82,6 +91,20 @@ public class MenuInput
     {
         bool value = NextTheme;
         NextTheme = false;
+        return value;
+    }
+
+    public bool ConsumeGamepadLeftShoulder()
+    {
+        bool value = GamepadLeftShoulder;
+        GamepadLeftShoulder = false;
+        return value;
+    }
+
+    public bool ConsumeGamepadRightShoulder()
+    {
+        bool value = GamepadRightShoulder;
+        GamepadRightShoulder = false;
         return value;
     }
 }

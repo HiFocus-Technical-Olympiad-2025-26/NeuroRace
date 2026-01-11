@@ -13,6 +13,16 @@ public class GameManager : MonoBehaviour
         Running
     }
 
+    [System.Serializable]
+    public class SkyboxPreset
+    {
+        public Material skyboxMaterial;
+
+        [Header("Directional Light Intensities")]
+        public float directionalLight1Intensity = 1f;
+        public float directionalLight2Intensity = 1f;
+    }
+
     public GameState CurrentState { get; private set; } = GameState.Idle;
 
     [SerializeField] private GameSettingsSO gameSettings;
@@ -20,14 +30,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LapTimer lapTimer;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject aiPrefab;
-    [SerializeField] private NeuroObstacleController neuroObstacleController;
+    [SerializeField] private List<NeuroObstacleController> neuroObstacleControllers;
 
     [Header("Start lights")]
     [SerializeField] private StartLights startLights;
     [SerializeField] private float LightSequenceInterval = 1f;
 
     [Header("Skybox")]
-    [SerializeField] private List<Material> SkyboxMaterials;
+    [SerializeField] private List<SkyboxPreset> SkyboxPresets;
+
+    [Header("Directional Lights")]
+    [SerializeField] private Light directionalLight1;
+    [SerializeField] private Light directionalLight2;
+
     private List<GameObject> AIInstances = new List<GameObject>();
 
     public static GameManager Instance { get; private set; }
@@ -115,19 +130,22 @@ public class GameManager : MonoBehaviour
             nextAIStartPosition++;
         }
 
-        if(neuroObstacleController != null)
+        foreach (var neuroObstacleController in neuroObstacleControllers)
         {
-            if(gameSettings.ShowNeuroObstacle)
+            if (neuroObstacleController != null)
             {
-                neuroObstacleController.gameObject.SetActive(true);
-                neuroObstacleController.ResetObstacle();
-                neuroObstacleController.IgnoreAICollisions();
+                if (gameSettings.ShowNeuroObstacle)
+                {
+                    neuroObstacleController.gameObject.SetActive(true);
+                    neuroObstacleController.ResetObstacle();
+                    neuroObstacleController.IgnoreAICollisions();
+                }
+                else
+                    neuroObstacleController.gameObject.SetActive(false);
             }
             else
-                neuroObstacleController.gameObject.SetActive(false);
+                Debug.LogError("neuroObstacleController is null", neuroObstacleController);
         }
-        else
-            Debug.LogError("neuroObstacleController is null", neuroObstacleController);
 
         //startLights.TurnOnUpTo(3);
         StartCoroutine(StartLightSequence());
@@ -161,12 +179,23 @@ public class GameManager : MonoBehaviour
 
     private void ApplySkybox()
     {
-        if (SkyboxMaterials == null || SkyboxMaterials.Count == 0)
+        if (SkyboxPresets == null || SkyboxPresets.Count == 0)
             return;
 
-        int index = Mathf.Clamp(gameSettings.skyboxIndex, 0, SkyboxMaterials.Count - 1);
+        int index = Mathf.Clamp(gameSettings.skyboxIndex, 0, SkyboxPresets.Count - 1);
 
-        RenderSettings.skybox = SkyboxMaterials[index];
+
+        SkyboxPreset preset = SkyboxPresets[index];
+
+        if (preset.skyboxMaterial != null)
+            RenderSettings.skybox = preset.skyboxMaterial;
+
+        if (directionalLight1 != null)
+            directionalLight1.intensity = preset.directionalLight1Intensity;
+
+        if (directionalLight2 != null)
+            directionalLight2.intensity = preset.directionalLight2Intensity;
+
         DynamicGI.UpdateEnvironment();
     }
 }

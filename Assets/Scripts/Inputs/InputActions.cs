@@ -273,6 +273,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""1b646fb9-27a6-4abc-a51c-d5e08ec74745"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2995e145-2f16-478a-9f63-299ab15e6256"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
@@ -350,6 +361,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""97f46cf7-172b-44b6-b609-46e62d367416"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""fd357f0e-d1ea-40e1-9427-6434e16f3beb"",
                     ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
@@ -372,17 +394,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a4798d16-86f0-4d9b-85fb-9844aec051f5"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SpawnStart"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""8aee6db1-3967-4d92-b082-dec5a1481f6c"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
@@ -396,6 +407,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""31e7e011-a01d-4bda-9d9b-c2b025872756"",
                     ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Quit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""216a2192-2372-4e2e-95aa-558c6b9c1634"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -437,61 +459,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""7f6ed663-fd20-4cac-a8f0-925e80f27c85"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraRotate"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""9e5eaffb-0201-4905-adb5-b1c3f28e792e"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""adee8dcd-d008-4652-9c15-c7deea5d676b"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""8d387237-ea0e-439b-a0bd-74e03e1c7234"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""d5f9887c-ff6e-4bb0-84e4-31e76092021c"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""CameraRotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""edd041bc-46e9-4d9b-8461-5181b12c2235"",
                     ""path"": ""<Gamepad>/rightStick"",
@@ -516,7 +483,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""37cc7454-0529-4e8e-9df7-6530bd0aea1f"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -609,6 +576,24 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Gamepad_LeftShoulder"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a09fcd1-6457-416f-8c8a-050afd473ed1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Gamepad_RightShoulder"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1e8c034-9a93-41b9-95c4-7566eb382da5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -876,6 +861,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""NextTheme"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a0b334a-737e-424e-b1f2-38f94bb9b3eb"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gamepad_LeftShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2e896d09-f8d1-486e-a0f8-fa32a8aef94c"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Gamepad_RightShoulder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -906,6 +913,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Menu_MiddleClick = m_Menu.FindAction("MiddleClick", throwIfNotFound: true);
         m_Menu_RightClick = m_Menu.FindAction("RightClick", throwIfNotFound: true);
         m_Menu_NextTheme = m_Menu.FindAction("NextTheme", throwIfNotFound: true);
+        m_Menu_Gamepad_LeftShoulder = m_Menu.FindAction("Gamepad_LeftShoulder", throwIfNotFound: true);
+        m_Menu_Gamepad_RightShoulder = m_Menu.FindAction("Gamepad_RightShoulder", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1102,6 +1111,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_MiddleClick;
     private readonly InputAction m_Menu_RightClick;
     private readonly InputAction m_Menu_NextTheme;
+    private readonly InputAction m_Menu_Gamepad_LeftShoulder;
+    private readonly InputAction m_Menu_Gamepad_RightShoulder;
     public struct MenuActions
     {
         private @InputActions m_Wrapper;
@@ -1115,6 +1126,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @MiddleClick => m_Wrapper.m_Menu_MiddleClick;
         public InputAction @RightClick => m_Wrapper.m_Menu_RightClick;
         public InputAction @NextTheme => m_Wrapper.m_Menu_NextTheme;
+        public InputAction @Gamepad_LeftShoulder => m_Wrapper.m_Menu_Gamepad_LeftShoulder;
+        public InputAction @Gamepad_RightShoulder => m_Wrapper.m_Menu_Gamepad_RightShoulder;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1151,6 +1164,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @NextTheme.started += instance.OnNextTheme;
             @NextTheme.performed += instance.OnNextTheme;
             @NextTheme.canceled += instance.OnNextTheme;
+            @Gamepad_LeftShoulder.started += instance.OnGamepad_LeftShoulder;
+            @Gamepad_LeftShoulder.performed += instance.OnGamepad_LeftShoulder;
+            @Gamepad_LeftShoulder.canceled += instance.OnGamepad_LeftShoulder;
+            @Gamepad_RightShoulder.started += instance.OnGamepad_RightShoulder;
+            @Gamepad_RightShoulder.performed += instance.OnGamepad_RightShoulder;
+            @Gamepad_RightShoulder.canceled += instance.OnGamepad_RightShoulder;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -1182,6 +1201,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @NextTheme.started -= instance.OnNextTheme;
             @NextTheme.performed -= instance.OnNextTheme;
             @NextTheme.canceled -= instance.OnNextTheme;
+            @Gamepad_LeftShoulder.started -= instance.OnGamepad_LeftShoulder;
+            @Gamepad_LeftShoulder.performed -= instance.OnGamepad_LeftShoulder;
+            @Gamepad_LeftShoulder.canceled -= instance.OnGamepad_LeftShoulder;
+            @Gamepad_RightShoulder.started -= instance.OnGamepad_RightShoulder;
+            @Gamepad_RightShoulder.performed -= instance.OnGamepad_RightShoulder;
+            @Gamepad_RightShoulder.canceled -= instance.OnGamepad_RightShoulder;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -1224,5 +1249,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMiddleClick(InputAction.CallbackContext context);
         void OnRightClick(InputAction.CallbackContext context);
         void OnNextTheme(InputAction.CallbackContext context);
+        void OnGamepad_LeftShoulder(InputAction.CallbackContext context);
+        void OnGamepad_RightShoulder(InputAction.CallbackContext context);
     }
 }

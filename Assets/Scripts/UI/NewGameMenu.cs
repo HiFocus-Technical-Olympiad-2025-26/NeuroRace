@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class NewGameMenu : MonoBehaviour
 {
     [Header("UI Navigation")]
-    public GameObject firstButton;
+    public GameObject firstUIObject;
     [SerializeField] string GameSceneName = "GameScene";
 
     [Header("UI Inputs")]
@@ -31,8 +31,6 @@ public class NewGameMenu : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private GameSettingsSO gameSettings;
     [SerializeField] private List<LevelConfig> levelConfigs;
-
-    private bool hasFocusedBtn = false;
 
     public enum StartPositionType
     {
@@ -68,18 +66,22 @@ public class NewGameMenu : MonoBehaviour
 
     void Update()
     {
-        Vector2 dir = InputManager.Instance.Menu.Direction;
+        var input = InputManager.Instance.Menu;
 
-        if (!hasFocusedBtn && dir != Vector2.zero)
-        {
-            EventSystem.current.SetSelectedGameObject(firstButton);
-            hasFocusedBtn = true;
-        }
+        Vector2 dir = input.Direction;
+        bool isSomethingSelected = EventSystem.current.currentSelectedGameObject != null;
+        if (!isSomethingSelected && dir != Vector2.zero)
+            EventSystem.current.SetSelectedGameObject(firstUIObject);
 
         if (Mouse.current.delta.ReadValue().sqrMagnitude > 0.1f)
-        {
             EventSystem.current.SetSelectedGameObject(null);
-        }
+
+
+        if (input.ConsumeGamepadLeftShoulder())
+            skinSwitcher.NextSkin();
+
+        if (input.ConsumeGamepadRightShoulder())
+            skinSwitcher.PreviousSkin();
     }
 
     public void BtnNewGame()
@@ -178,31 +180,30 @@ public class NewGameMenu : MonoBehaviour
         bool allowAdvanced = Mathf.RoundToInt(NumOfAIsSlider.value) > 0;
         bool isSpecific = allowAdvanced && option == "Specific";
 
-        StartPositionSlider.gameObject.SetActive(isSpecific);
-        StartPositionValueText.gameObject.SetActive(isSpecific);
+        /*StartPositionSlider.gameObject.SetActive(isSpecific);
+        StartPositionValueText.gameObject.SetActive(isSpecific);*/
+        StartPositionSlider.interactable = isSpecific;
+        //StartPositionSlider.gameObject.GetComponent<CanvasGroup>().alpha = isSpecific ? 1f : 0.2f;
 
         gameSettings.RandomizeStartPosition = allowAdvanced && option == "Random";
 
         if (option == "Pole")
-            StartPositionSlider.SetValueWithoutNotify(1);
+            StartPositionSlider.value = 1;
         else if (option == "Second")
-            StartPositionSlider.SetValueWithoutNotify(2);
+            StartPositionSlider.value = 2;
         else if (option == "Last")
-            StartPositionSlider.SetValueWithoutNotify((int)StartPositionSlider.maxValue);
+            StartPositionSlider.value = (int)StartPositionSlider.maxValue;
 
-        if (isSpecific)
-            StartPositionValueText.text = Mathf.RoundToInt(StartPositionSlider.value).ToString();
+        StartPositionValueText.text = Mathf.RoundToInt(StartPositionSlider.value).ToString();
     }
 
     public void OnStartPositionSliderChanged(float value)
     {
-        Debug.Log("OnStartPositionSliderChanged");
         StartPositionValueText.text = Mathf.RoundToInt(value).ToString();
     }
 
     public void OnNumOfAIsSliderChanged(float value)
     {
-        Debug.Log("OnNumOfAIsSliderChanged");
         UpdateNumOfAIsUI();
     }
 }

@@ -14,7 +14,9 @@ public class UIThemeElement : MonoBehaviour
         Toggle,
         Light,
         Renderer,
-        ParticleSystem
+        ParticleSystem,
+        Slider,
+        Dropdown
     }
 
     public enum ThemeColorType
@@ -111,7 +113,7 @@ public class UIThemeElement : MonoBehaviour
                 }
                 break;
 
-            case ElementType.Toggle:
+            /*case ElementType.Toggle:
                 if (TryGetComponent<Toggle>(out var toggle))
                 {
                     if (toggle.graphic != null)
@@ -123,6 +125,18 @@ public class UIThemeElement : MonoBehaviour
                     var tgTxt = GetComponentInChildren<TMP_Text>();
                     if (tgTxt != null)
                         tgTxt.color = theme.textColor;
+                }
+                break;*/
+            case ElementType.Toggle:
+            case ElementType.Slider:
+            case ElementType.Dropdown:
+                if (TryGetComponent<Selectable>(out var sel))
+                {
+                    var colors = sel.colors;
+                    //colors.normalColor = chosen;
+                    colors.highlightedColor = chosen;
+                    colors.selectedColor = chosen;
+                    sel.colors = colors;
                 }
                 break;
 
