@@ -21,8 +21,14 @@ EditorBuildSettings:
     path: Assets/Scenes/NewGame.unity
     guid: e8b6930d4f250654b91c52a77aea587b
   - enabled: 1
+    path: Assets/Scenes/TrackPickerMenu.unity
+    guid: 0493fdff376fcda4d8fe1ecaa0bb449b
+  - enabled: 1
     path: Assets/Scenes/BasicGameScene.unity
     guid: 87f24204a74213841bd5b0a5935f2762
+  - enabled: 1
+    path: Assets/Scenes/BrnoGameScene.unity
+    guid: 12a8b91a4ccf76a43bca4bf418d9eb33
   - enabled: 1
     path: Assets/Scenes/HUD.unity
     guid: 95926d7d63af698408144f133c096143
