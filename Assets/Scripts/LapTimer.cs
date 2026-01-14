@@ -6,6 +6,7 @@ using UnityEngine;
 public class LapTimer : MonoBehaviour
 {
     public List<Collider> sectorTriggers = new List<Collider>();
+    public string lapTimesFileName = string.Empty;
 
     private float lapStartTime;
     private float sectorStartTime;
@@ -21,6 +22,8 @@ public class LapTimer : MonoBehaviour
             trigger.parentTimer = this;
             trigger.myIndex = i;
         }
+
+        LiveLapState.FileName = lapTimesFileName;
     }
 
     void Update()
@@ -38,6 +41,7 @@ public class LapTimer : MonoBehaviour
         LiveLapState.CurrentLapTime = 0f;
         LiveLapState.CurrentSectors.Clear();
         LiveLapState.CurrentSectorIndex = 0;
+        LiveLapState.FileName = lapTimesFileName;
     }
 
     private void OnSectorTriggered(int index)
@@ -89,7 +93,7 @@ public class LapTimer : MonoBehaviour
 
             // Save lap time
             List<float> sectorsCopy = new List<float>(sectorTimes.Values);
-            LapTimesSaver.SaveLapTime(currentLapTime, sectorsCopy);
+            LapTimesSaver.SaveLapTime(currentLapTime, sectorsCopy, lapTimesFileName);
 
             // Reset for next lap
             lapStartTime = Time.time;

@@ -83,7 +83,7 @@ public class LapTimeHUD : MonoBehaviour
 
     void UpdateBest()
     {
-        TimeStats stats = LapTimesSaver.LoadAll();
+        TimeStats stats = LapTimesSaver.LoadAll(LiveLapState.FileName);
 
         if (stats.FastestTime <= 0f)
         {

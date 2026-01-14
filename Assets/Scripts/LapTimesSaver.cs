@@ -17,13 +17,11 @@ public static class LapTimesSaver
 {
     public static event System.Action OnLapSaved;
 
-    private static readonly string FileName = "LapTimes.json";
+    private static string GetPath(string FileName) => Path.Combine(Application.persistentDataPath, FileName);
 
-    private static string GetPath() => Path.Combine(Application.persistentDataPath, FileName);
-
-    public static TimeStats LoadAll()
+    public static TimeStats LoadAll(string fileName)
     {
-        string path = GetPath();
+        string path = GetPath(fileName);
 
         if (!File.Exists(path))
             return new TimeStats();
@@ -32,17 +30,17 @@ public static class LapTimesSaver
         return JsonUtility.FromJson<TimeStats>(json);
     }
 
-    public static List<float> LoadLapTimes() => LoadAll().LapTimes;
+    public static List<float> LoadLapTimes(string fileName) => LoadAll(fileName).LapTimes;
 
-    public static List<float> LoadSectorTimes() => LoadAll().SectorTimes;
+    public static List<float> LoadSectorTimes(string fileName) => LoadAll(fileName).SectorTimes;
 
-    public static float LoadFastestTime() => LoadAll().FastestTime;
+    public static float LoadFastestTime(string fileName) => LoadAll(fileName).FastestTime;
 
-    public static void SaveLapTime(float lapTime, List<float> sectors)
+    public static void SaveLapTime(float lapTime, List<float> sectors, string fileName)
     {
         TimeStats data;
 
-        string path = GetPath();
+        string path = GetPath(fileName);
 
         if (File.Exists(path))
         {

@@ -257,7 +257,7 @@ MonoBehaviour:
   - {fileID: 4680383921607931982}
   - {fileID: 4680383923494363287}
   - {fileID: 4680383923094674647}
-  currentCamIndex: 0
+  currentCamIndex: 1
 --- !u!1 &4680383922934647769
 GameObject:
   m_ObjectHideFlags: 0

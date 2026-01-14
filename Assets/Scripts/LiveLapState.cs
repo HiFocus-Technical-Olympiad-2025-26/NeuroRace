@@ -9,4 +9,6 @@ public static class LiveLapState
 
     public static float PreviousLapTime;
     public static List<float> PreviousSectors = new List<float>();
+
+    public static string FileName = string.Empty;
 }

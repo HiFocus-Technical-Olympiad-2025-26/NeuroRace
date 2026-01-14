@@ -1210,6 +1210,7 @@ MonoBehaviour:
   - {fileID: 1242153301}
   - {fileID: 697418461}
   - {fileID: 357052171}
+  lapTimesFileName: LapTimes_JumpCircuit
 --- !u!1 &343368543
 GameObject:
   m_ObjectHideFlags: 0
