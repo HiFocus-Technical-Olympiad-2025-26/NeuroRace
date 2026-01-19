@@ -26,6 +26,7 @@ public class NewGameMenu : MonoBehaviour
     [SerializeField] private Slider NumOfAIsSlider;
     [SerializeField] private TextMeshProUGUI NumOfAIsValueText;
     [SerializeField] private Toggle ShowNeuroObstacleToggle;
+    [SerializeField] private Button NewGameBtn;
     [SerializeField] private SkinSwitcher skinSwitcher;
 
     [Header("Settings")]
@@ -60,6 +61,7 @@ public class NewGameMenu : MonoBehaviour
         StartPositionDropdown.onValueChanged.AddListener(OnStartPositionDropdownChanged);
         StartPositionSlider.onValueChanged.AddListener(OnStartPositionSliderChanged);
         NumOfAIsSlider.onValueChanged.AddListener(OnNumOfAIsSliderChanged);
+        NewGameBtn.onClick.AddListener(BtnNewGame);
 
         UpdateNumOfAIsUI();
     }
